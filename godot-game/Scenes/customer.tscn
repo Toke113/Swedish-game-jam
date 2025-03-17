@@ -20,3 +20,9 @@ script = ExtResource("1_fp685")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.085, 0.085)
 sprite_frames = SubResource("SpriteFrames_7c3kf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
