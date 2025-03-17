@@ -1,14 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg8gdyjoqv88j"]
+[gd_scene load_steps=6 format=3 uid="uid://bg8gdyjoqv88j"]
 
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cilar20aja0cc" path="res://Scenes/customer.tscn" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="3_kry3j"]
+[ext_resource type="Texture2D" uid="uid://0i1i01k6q123" path="res://button.png" id="4_kry3j"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
 
 [node name="table" parent="." instance=ExtResource("2_8gbba")]
 script = ExtResource("3_kry3j")
+
+[node name="Button" type="Button" parent="table"]
+visible = false
+offset_left = 925.0
+offset_top = 406.0
+offset_right = 1023.0
+offset_bottom = 504.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button2" type="Button" parent="table"]
+visible = false
+offset_left = 925.0
+offset_top = 406.0
+offset_right = 1023.0
+offset_bottom = 504.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button3" type="Button" parent="table"]
+offset_left = 925.0
+offset_top = 406.0
+offset_right = 1023.0
+offset_bottom = 504.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button4" type="Button" parent="table"]
+offset_left = 654.0
+offset_top = 403.0
+offset_right = 752.0
+offset_bottom = 501.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button5" type="Button" parent="table"]
+offset_left = 533.0
+offset_top = 403.0
+offset_right = 631.0
+offset_bottom = 501.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button6" type="Button" parent="table"]
+offset_left = 407.0
+offset_top = 403.0
+offset_right = 505.0
+offset_bottom = 501.0
+theme_override_icons/icon = ExtResource("4_kry3j")
+
+[node name="Button7" type="Button" parent="table"]
+offset_left = 156.0
+offset_top = 402.0
+offset_right = 254.0
+offset_bottom = 500.0
+theme_override_icons/icon = ExtResource("4_kry3j")
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
