@@ -31,6 +31,16 @@ func _move_left():
 	buttons.push_back(buttons.pop_front())
 	update_buttons()
 
+func music():
+	$AudioStreamPlayer.play()
+func music1():
+	$AudioStreamPlayer1.play()
+func music2():
+	$AudioStreamPlayer2.play()
+func music3():
+	$AudioStreamPlayer3.play()
+func music4():
+	$AudioStreamPlayer4.play()
 
 func _on_left_button_pressed():
 	_move_left()
