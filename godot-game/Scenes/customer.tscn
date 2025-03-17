@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="1_7c3kf"]
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0v30w"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -14,6 +14,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="customer" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_0v30w")
+[node name="customer" type="Node2D"]
 script = ExtResource("1_fp685")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.085, 0.085)
+sprite_frames = SubResource("SpriteFrames_7c3kf")
