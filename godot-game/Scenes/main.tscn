@@ -12,6 +12,7 @@
 script = ExtResource("1_jjgbg")
 
 [node name="table" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(-221, 96)
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(-3222.5, 225)

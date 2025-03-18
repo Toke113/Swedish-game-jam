@@ -74,6 +74,7 @@ func button():
 		Main.points+=1
 		Main.characters+=1
 		Main.two_times=2
+		
 	else:
 		Main.two_times-=1
 		check_two_times()
@@ -109,6 +110,14 @@ func button6():
 	else:
 		Main.two_times-=1
 		check_two_times()
+
+func close_game():
+	get_tree().quit()
+func restart_game():
+	get_tree().reload_current_scene()
+
+
+
 
 
 
@@ -160,3 +169,6 @@ func music3():
 	$AudioStreamPlayer3.play()
 func music4():
 	$AudioStreamPlayer4.play()
+	
+	
+	

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bilc26i6jeeb5"]
+
+[ext_resource type="Script" uid="uid://dymppkfwdwvbw" path="res://Scenes/menu.gd" id="1_1rerr"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_1rerr")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 677.0
+offset_top = 220.0
+offset_right = 1197.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 664.0
+offset_top = 693.0
+offset_right = 1214.0
+offset_bottom = 836.0
+theme_override_font_sizes/font_size = 40
+text = "Close
+"
+
+[connection signal="button_down" from="PlayButton" to="." method="play"]
+[connection signal="button_down" from="CloseButton" to="." method="close"]

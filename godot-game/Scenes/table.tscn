@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c430tj11bcy5g"]
+[gd_scene load_steps=10 format=3 uid="uid://c430tj11bcy5g"]
 
 [ext_resource type="Texture2D" uid="uid://0i1i01k6q123" path="res://button.png" id="1_0xndo"]
 [ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="1_xqsq7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dguumbicyh1ba" path="res://button_pink.png" id="2_xqsq7"]
 [ext_resource type="Texture2D" uid="uid://c2r2mla5peg6e" path="res://button_yellow.png" id="3_5cpa6"]
 [ext_resource type="Texture2D" uid="uid://xlfl6sxntdta" path="res://button_black.png" id="4_usajj"]
+[ext_resource type="Texture2D" uid="uid://c3ggs34olhjrm" path="res://restart.png" id="7_usajj"]
+[ext_resource type="Texture2D" uid="uid://caw14qyw0ak8v" path="res://close.png" id="8_o4lkm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usajj"]
 texture = ExtResource("2_5cpa6")
@@ -15,10 +17,10 @@ script = ExtResource("1_xqsq7")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(1080, 0)
-offset_left = 3.0
-offset_top = 847.0
-offset_right = 1972.0
-offset_bottom = 1077.0
+offset_left = -54.0
+offset_top = 844.0
+offset_right = 1915.0
+offset_bottom = 1074.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_usajj")
 
 [node name="ButtonLeft" type="Button" parent="."]
@@ -72,6 +74,24 @@ offset_right = 794.0
 offset_bottom = 991.0
 theme_override_icons/icon = ExtResource("4_usajj")
 
+[node name="Button3" type="Button" parent="."]
+offset_left = 1607.0
+offset_top = 23.0
+offset_right = 1705.0
+offset_bottom = 121.0
+theme_override_icons/icon = ExtResource("7_usajj")
+
+[node name="ButtonClose" type="Button" parent="."]
+offset_left = 1781.0
+offset_top = 29.0
+offset_right = 1879.0
+offset_bottom = 127.0
+theme_override_icons/icon = ExtResource("8_o4lkm")
+
+[node name="ButtonRestart" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="button_down" from="ButtonLeft" to="." method="_move_left"]
 [connection signal="button_down" from="ButtonRight" to="." method="_move_right"]
 [connection signal="button_down" from="Button" to="." method="button"]
@@ -79,3 +99,5 @@ theme_override_icons/icon = ExtResource("4_usajj")
 [connection signal="button_down" from="Button4" to="." method="button4"]
 [connection signal="button_down" from="Button5" to="." method="button5"]
 [connection signal="button_down" from="Button6" to="." method="button6"]
+[connection signal="button_down" from="ButtonClose" to="." method="close_game"]
+[connection signal="button_down" from="ButtonRestart" to="." method="restart_game"]
