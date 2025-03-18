@@ -58,6 +58,28 @@ func _input(event):
 			else:
 				_move_right()
 			last_mouse_x = event.position.x  
+			
+			
+func button():
+	if Main.characters==1:
+		Main.points+=1
+		Main.characters+=1
+func button2():
+	if Main.characters==2:	
+		Main.points+=1
+		Main.characters+=1
+func button4():
+	if Main.characters==3:	
+		Main.points+=1
+		Main.characters+=1
+func button5():
+	if Main.characters==4:	
+		Main.points+=1
+		Main.characters+=1
+func button6():
+	if Main.characters==5:	
+		Main.points+=1
+		get_tree().quit()
 
 
 
