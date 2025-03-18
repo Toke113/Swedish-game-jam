@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 	if current_customer:
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
-	if 
+	
 	
