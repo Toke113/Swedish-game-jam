@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg8gdyjoqv88j"]
+[gd_scene load_steps=8 format=3 uid="uid://bg8gdyjoqv88j"]
 
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cilar20aja0cc" path="res://Scenes/customer.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bnxfijmvifjor" path="res://Scenes/customer_1.tscn" id="4_6bp64"]
+[ext_resource type="PackedScene" uid="uid://d3nyp6al7matu" path="res://Scenes/customer_2.tscn" id="5_344ge"]
+[ext_resource type="PackedScene" uid="uid://bspgfl5ifdmkg" path="res://Scenes/customer_3.tscn" id="6_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://bmcp8yrrckgni" path="res://Scenes/customer_4.tscn" id="7_hptm8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
@@ -12,3 +16,11 @@ script = ExtResource("1_jjgbg")
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(-3222.5, 225)
 scale = Vector2(0.700125, 1)
+
+[node name="customer_1" parent="." instance=ExtResource("4_6bp64")]
+
+[node name="customer_2" parent="." instance=ExtResource("5_344ge")]
+
+[node name="customer_3" parent="." instance=ExtResource("6_ynf5e")]
+
+[node name="customer_4" parent="." instance=ExtResource("7_hptm8")]

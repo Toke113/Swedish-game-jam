@@ -9,8 +9,3 @@ var hint
 
 func _ready() -> void:
 	pass
-func new_customer(desired_music, timer, hint):
-	desired_music = desired_music
-	timer = timer
-	hint = hint
-	pass
