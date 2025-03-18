@@ -8,4 +8,6 @@ var hint
 #TODO Function that sets the value of the customer
 
 func _ready() -> void:
-	pass
+	desired_music = 5
+	time = 60
+	hint = "I love the number 5"
