@@ -10,7 +10,6 @@ var hint
 func _ready() -> void:
 	pass
 func new_customer(desired_music, timer, hint):
-	desired_music = desired_music
-	timer = timer
-	hint = hint
-	pass
+	desired_music = 2
+	time = 90
+	hint = "I love the number 2"
