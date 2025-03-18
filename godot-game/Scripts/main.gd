@@ -8,4 +8,5 @@ var  characters=1
 
 
 
+
 #TODO call the character creator function

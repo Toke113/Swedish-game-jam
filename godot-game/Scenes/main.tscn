@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cilar20aja0cc" path="res://Scenes/customer.tscn" id="3_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://bnxfijmvifjor" path="res://Scenes/customer_1.tscn" id="4_6bp64"]
-[ext_resource type="PackedScene" uid="uid://d3nyp6al7matu" path="res://Scenes/customer_2.tscn" id="5_344ge"]
-[ext_resource type="PackedScene" uid="uid://bspgfl5ifdmkg" path="res://Scenes/customer_3.tscn" id="6_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://bmcp8yrrckgni" path="res://Scenes/customer_4.tscn" id="7_hptm8"]
+[ext_resource type="PackedScene" path="res://Scenes/customer_1.tscn" id="4_6bp64"]
+[ext_resource type="PackedScene" path="res://Scenes/customer_2.tscn" id="5_344ge"]
+[ext_resource type="PackedScene" path="res://Scenes/customer_3.tscn" id="6_ynf5e"]
+[ext_resource type="PackedScene" path="res://Scenes/customer_4.tscn" id="7_hptm8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
