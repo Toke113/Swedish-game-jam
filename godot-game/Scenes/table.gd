@@ -60,26 +60,55 @@ func _input(event):
 			last_mouse_x = event.position.x  
 			
 			
+func check_lives():
+	if Main.lives<=0:
+		get_tree().quit()
+func check_two_times():
+	if Main.two_times==0:
+		Main.lives-=1
+		check_lives()
+		Main.two_times=2		
+		Main.characters+=1
 func button():
 	if Main.characters==1:
 		Main.points+=1
 		Main.characters+=1
+		Main.two_times=2
+	else:
+		Main.two_times-=1
+		check_two_times()
 func button2():
 	if Main.characters==2:	
 		Main.points+=1
 		Main.characters+=1
+		Main.two_times=2
+	else:
+		Main.two_times-=1
+		check_two_times()
 func button4():
 	if Main.characters==3:	
 		Main.points+=1
 		Main.characters+=1
+		Main.two_times=2
+	else:
+		Main.two_times-=1
+		check_two_times()
 func button5():
 	if Main.characters==4:	
 		Main.points+=1
 		Main.characters+=1
+		Main.two_times=2
+	else:
+		Main.two_times-=1
+		check_two_times()
 func button6():
 	if Main.characters==5:	
 		Main.points+=1
 		get_tree().quit()
+		#Main.two_times=2
+	else:
+		Main.two_times-=1
+		check_two_times()
 
 
 

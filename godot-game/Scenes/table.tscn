@@ -63,3 +63,7 @@ theme_override_icons/icon = ExtResource("4_usajj")
 [connection signal="button_down" from="ButtonLeft" to="." method="_move_left"]
 [connection signal="button_down" from="ButtonRight" to="." method="_move_right"]
 [connection signal="button_down" from="Button" to="." method="button"]
+[connection signal="button_down" from="Button2" to="." method="button2"]
+[connection signal="button_down" from="Button4" to="." method="button4"]
+[connection signal="button_down" from="Button5" to="." method="button5"]
+[connection signal="button_down" from="Button6" to="." method="button6"]
