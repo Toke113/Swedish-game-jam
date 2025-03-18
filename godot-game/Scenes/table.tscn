@@ -18,23 +18,23 @@ script = ExtResource("1_xqsq7")
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(1080, 0)
 offset_left = -54.0
-offset_top = 844.0
+offset_top = 756.0
 offset_right = 1915.0
-offset_bottom = 1074.0
+offset_bottom = 1154.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_usajj")
 
 [node name="ButtonLeft" type="Button" parent="."]
-offset_left = 230.0
-offset_top = 896.0
-offset_right = 328.0
-offset_bottom = 994.0
+offset_left = 253.0
+offset_top = 804.0
+offset_right = 351.0
+offset_bottom = 902.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="ButtonRight" type="Button" parent="."]
-offset_left = 1617.0
-offset_top = 904.0
-offset_right = 1715.0
-offset_bottom = 1002.0
+offset_left = 1606.0
+offset_top = 813.0
+offset_right = 1704.0
+offset_bottom = 911.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Button" type="Button" parent="."]
@@ -46,17 +46,17 @@ offset_bottom = 991.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 896.0
-offset_top = 895.0
-offset_right = 994.0
-offset_bottom = 993.0
+offset_left = 898.0
+offset_top = 803.0
+offset_right = 996.0
+offset_bottom = 901.0
 theme_override_icons/icon = ExtResource("2_xqsq7")
 
 [node name="Button4" type="Button" parent="."]
-offset_left = 1094.0
-offset_top = 894.0
-offset_right = 1192.0
-offset_bottom = 992.0
+offset_left = 1106.0
+offset_top = 799.0
+offset_right = 1204.0
+offset_bottom = 897.0
 theme_override_icons/icon = ExtResource("3_5cpa6")
 
 [node name="Button5" type="Button" parent="."]
@@ -68,10 +68,10 @@ offset_bottom = 992.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Button6" type="Button" parent="."]
-offset_left = 696.0
-offset_top = 893.0
-offset_right = 794.0
-offset_bottom = 991.0
+offset_left = 698.0
+offset_top = 806.0
+offset_right = 796.0
+offset_bottom = 904.0
 theme_override_icons/icon = ExtResource("4_usajj")
 
 [node name="Button3" type="Button" parent="."]
