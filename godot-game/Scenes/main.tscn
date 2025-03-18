@@ -15,7 +15,6 @@ script = ExtResource("1_jjgbg")
 position = Vector2(-221, 96)
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(0, 0)
 scale = Vector2(0.700125, 1)
 
 [node name="customer_1" parent="." instance=ExtResource("4_6bp64")]
