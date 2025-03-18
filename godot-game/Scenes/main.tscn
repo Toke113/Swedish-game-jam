@@ -1,83 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg8gdyjoqv88j"]
+[gd_scene load_steps=4 format=3 uid="uid://bg8gdyjoqv88j"]
 
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cilar20aja0cc" path="res://Scenes/customer.tscn" id="3_jjvhh"]
-[ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="3_kry3j"]
-[ext_resource type="Texture2D" uid="uid://0i1i01k6q123" path="res://button.png" id="4_kry3j"]
-[ext_resource type="Texture2D" uid="uid://xlfl6sxntdta" path="res://button_black.png" id="5_21xkr"]
-[ext_resource type="Texture2D" uid="uid://dguumbicyh1ba" path="res://button_pink.png" id="5_344ge"]
-[ext_resource type="Texture2D" uid="uid://c2r2mla5peg6e" path="res://button_yellow.png" id="6_ynf5e"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
 
 [node name="table" parent="." instance=ExtResource("2_8gbba")]
-script = ExtResource("3_kry3j")
-
-[node name="ButtonLeft" type="Button" parent="table"]
-offset_left = 156.0
-offset_top = 402.0
-offset_right = 254.0
-offset_bottom = 500.0
-theme_override_icons/icon = ExtResource("4_kry3j")
-
-[node name="ButtonRight" type="Button" parent="table"]
-offset_left = 933.0
-offset_top = 387.0
-offset_right = 1031.0
-offset_bottom = 485.0
-theme_override_icons/icon = ExtResource("4_kry3j")
-
-[node name="Button" type="Button" parent="table"]
-offset_left = 495.0
-offset_top = 254.0
-offset_right = 593.0
-offset_bottom = 352.0
-theme_override_icons/icon = ExtResource("4_kry3j")
-
-[node name="Button2" type="Button" parent="table"]
-offset_left = 545.0
-offset_top = 390.0
-offset_right = 643.0
-offset_bottom = 488.0
-theme_override_icons/icon = ExtResource("5_344ge")
-
-[node name="Button4" type="Button" parent="table"]
-offset_left = 678.0
-offset_top = 392.0
-offset_right = 776.0
-offset_bottom = 490.0
-theme_override_icons/icon = ExtResource("6_ynf5e")
-
-[node name="Button5" type="Button" parent="table"]
-offset_left = 615.0
-offset_top = 254.0
-offset_right = 713.0
-offset_bottom = 352.0
-theme_override_icons/icon = ExtResource("4_kry3j")
-
-[node name="Button6" type="Button" parent="table"]
-offset_left = 431.0
-offset_top = 398.0
-offset_right = 529.0
-offset_bottom = 496.0
-theme_override_icons/icon = ExtResource("5_21xkr")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="table"]
-offset_left = -301.0
-offset_right = 2.0
-offset_bottom = 98.0
-
-[node name="Control" type="Control" parent="table"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(-3222.5, 225)
 scale = Vector2(0.700125, 1)
-
-[connection signal="button_down" from="table/ButtonLeft" to="table" method="_move_left"]
-[connection signal="button_down" from="table/ButtonRight" to="table" method="_move_right"]
