@@ -7,6 +7,10 @@ var two_times=2
 
 var  characters=1
 
+func change_customer():
+	
+	pass
+
 
 
 
