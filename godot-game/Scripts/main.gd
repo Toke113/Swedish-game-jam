@@ -1,10 +1,13 @@
 extends Node2D
 
 
-var points
-var lives
+var points=0
+var lives=3
+var two_times=2
 
-var  character 
+var  characters=1
+
+
 
 
 #TODO call the character creator function
