@@ -41,4 +41,5 @@ func _on_time_left_timeout() -> void:
 	change_customer.emit()
 
 func _on_main_move_customer_1() -> void:
+	moving = true
 	pass # Replace with function body.
