@@ -72,50 +72,55 @@ func _move_right():
 func _move_left():
 	buttons.push_back(buttons.pop_front())
 	update_buttons()
+var offset = Vector2.ZERO  # Объявляем переменную offset
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				for btn in buttons:
-					if btn.get_rect().has_point(event.position) and btn not in returning_buttons:
-						dragging = true
-						dragging_button = btn
-						original_position = dragging_button.global_position
-						break  # После break не может быть elif на этом же уровне
-
-				# Убираем elif, так как break уже выходит из цикла
-				if not dragging_button and scroll_area.has_point(event.position):
+				# Разрешаем перетаскивать только центральную кнопку, если она не возвращается
+				if buttons[1].get_rect().has_point(event.position) and buttons[1] not in returning_buttons:
+					dragging = true
+					dragging_button = buttons[1]
+					original_position = dragging_button.global_position
+					offset = dragging_button.global_position - event.position  # Запоминаем смещение между курсором и кнопкой
+				# Если кликнули в область скролла (но не по центральной кнопке), включаем горизонтальный скроллинг
+				elif scroll_area.has_point(event.position):
 					dragging = true
 					last_mouse_x = event.position.x
 
 			else:
 				if dragging_button:
 					if center_area.has_point(dragging_button.global_position):
-						# Кнопка мгновенно телепортируется обратно и срабатывает функция
+						# Кнопка мгновенно возвращается и срабатывает функция
 						dragging_button.global_position = original_position
 						process_button_action(dragging_button)
 					else:
-						# Кнопка плавно возвращается за 2 секунды и не реагирует на клики в это время
+						# Кнопка плавно возвращается за 2 секунды
 						returning_buttons[dragging_button] = true
 						var tween = get_tree().create_tween()
-						tween.tween_property(dragging_button, "global_position", original_position, 2)
+						tween.tween_property(dragging_button, "global_position", original_position, 1)
 						await tween.finished
 						returning_buttons.erase(dragging_button)  # После возврата кнопка снова кликабельна
 					dragging_button = null
 				dragging = false
 
 	if event is InputEventMouseMotion:
-		if dragging and dragging_button:
-			dragging_button.global_position += event.relative
-		elif dragging and not dragging_button:
-			var delta_x = event.position.x - last_mouse_x
-			if delta_x < -20: 
-				_move_left()
-				last_mouse_x = event.position.x
-			elif delta_x > 20:  
-				_move_right()
-				last_mouse_x = event.position.x
+		if dragging:
+			if dragging_button and dragging_button not in returning_buttons:
+				# Центральная кнопка теперь следует за курсором по X и Y с учетом смещения
+				dragging_button.global_position = event.position + offset
+			elif not dragging_button:
+				# Горизонтальный скроллинг при движении мыши (если нет активного перетаскивания кнопки)
+				var delta_x = event.position.x - last_mouse_x
+				if delta_x < -20: 
+					_move_left()
+					last_mouse_x = event.position.x
+				elif delta_x > 20:  
+					_move_right()
+					last_mouse_x = event.position.x
+
+
 
 func process_button_action(button):
 	if button == $Button6:
