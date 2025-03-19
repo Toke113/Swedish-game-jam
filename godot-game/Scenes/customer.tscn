@@ -15,6 +15,7 @@ animations = [{
 }]
 
 [node name="customer" type="Node2D"]
+position = Vector2(490, 262)
 rotation = -6.28319
 script = ExtResource("1_fp685")
 
@@ -42,3 +43,6 @@ show_percentage = false
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
+
+[connection signal="change_customer" from="." to="." method="_on_change_customer"]
+[connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
