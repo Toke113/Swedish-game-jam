@@ -29,3 +29,16 @@ position = Vector2(2882, 96)
 
 [node name="customer_4" parent="." instance=ExtResource("7_hptm8")]
 position = Vector2(3455, 134)
+
+[connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]
+[connection signal="move_customer_1" from="." to="customer_1" method="_on_main_move_customer_1"]
+[connection signal="move_customer_1" from="." to="customer_2" method="_on_main_move_customer_1"]
+[connection signal="move_customer_2" from="." to="customer_2" method="_on_main_move_customer_2"]
+[connection signal="move_customer_2" from="." to="customer_3" method="_on_main_move_customer_2"]
+[connection signal="move_customer_3" from="." to="customer_3" method="_on_main_move_customer_3"]
+[connection signal="move_customer_3" from="." to="customer_4" method="_on_main_move_customer_3"]
+[connection signal="move_customer_4" from="." to="customer_4" method="_on_main_move_customer_4"]
+[connection signal="change_customer" from="customer_1" to="." method="_on_customer_1_change_customer"]
+[connection signal="change_customer" from="customer_2" to="." method="_on_customer_2_change_customer"]
+[connection signal="change_customer" from="customer_3" to="." method="_on_customer_3_change_customer"]
+[connection signal="change_customer" from="customer_4" to="." method="_on_customer_4_change_customer"]

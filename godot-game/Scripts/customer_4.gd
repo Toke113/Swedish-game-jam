@@ -7,6 +7,11 @@ var hint
 
 var current_customer:bool = false
 var timer_started:bool = false
+var moving:bool = false
+var enter_store:bool = false
+var exit_store:bool = false
+
+signal change_customer
 
 #TODO Function that sets the value of the customer
 
@@ -29,3 +34,20 @@ func _process(delta: float) -> void:
 		if !timer_started:
 			$Timer/time_left.start()
 			timer_started = true
+
+func _on_time_left_timeout() -> void:
+	
+	$".".queue_free()
+	change_customer.emit()
+
+
+func _on_main_move_customer_1() -> void:
+	pass # Replace with function body.
+
+
+func _on_main_move_customer_3() -> void:
+	pass # Replace with function body.
+
+
+func _on_main_move_customer_4() -> void:
+	pass # Replace with function body.

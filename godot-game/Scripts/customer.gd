@@ -7,8 +7,11 @@ var hint
 
 var current_customer:bool = true
 var timer_started:bool = false
+var enter_store:bool = false
+var exit_store:bool = false
+
 signal change_customer
-signal enter_store
+
 #TODO Function that sets the value of the customer
 
 func _ready() -> void:
