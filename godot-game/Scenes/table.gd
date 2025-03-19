@@ -3,10 +3,17 @@ extends Node2D
 var buttons = []
 var positions = []
 var dragging = false
+var dragging_button = null
+var original_position = Vector2()
 var last_mouse_x = 0
-var scroll_area = Rect2()  
+var scroll_area = Rect2()
 @onready var audio_player = $AudioStreamPlayer
 var button_sounds = {}
+@onready var panel2 = $Panel2
+
+var center_area = Rect2()
+var returning_buttons = {}  # Словарь для отслеживания кнопок, которые возвращаются
+
 func _ready():
 	buttons = [
 		$Button6, $Button2, $Button4, $Button5, $Button
@@ -18,31 +25,38 @@ func _ready():
 		$Button5: preload("res://sound4.mp3"),
 		$Button: preload("res://sound5.mp3")
 	}
-	#buttons = button_sounds.keys()
 	for btn in buttons:
 		positions.append(btn.global_position)
-	
+
 	update_buttons()
-	calculate_scroll_area() 
+	calculate_scroll_area()
+
+func _process(delta):
+	# Центрируем область по Panel2
+	center_area.position = panel2.global_position - center_area.size / 2
+	center_area.size = panel2.size
 
 func update_buttons():
 	for i in range(buttons.size()):
 		buttons[i].global_position = positions[i]
 		buttons[i].visible = i < 3  
+		buttons[i].mouse_filter = Control.MOUSE_FILTER_IGNORE  
+
+		# Изменение размера кнопок
 		if i == 1:
-			buttons[i].scale = Vector2(1.2, 1.2) 
+			buttons[i].scale = Vector2(1.2, 1.2)  # Центральная кнопка большая
 			buttons[i].mouse_filter = Control.MOUSE_FILTER_STOP  
 		else:
-			buttons[i].scale = Vector2(0.8, 0.8) 
-			buttons[i].mouse_filter = Control.MOUSE_FILTER_IGNORE  
+			buttons[i].scale = Vector2(0.8, 0.8)  # Остальные кнопки маленькие
+
 	play_music_for_button(buttons[1])
-	calculate_scroll_area()  
+	calculate_scroll_area()
 
 func play_music_for_button(button):
 	if button in button_sounds: 
 		audio_player.stream = button_sounds[button] 
 		audio_player.play()
-		
+
 func calculate_scroll_area():
 	var left_limit = positions[0].x - 400
 	var right_limit = positions[-1].x + 400
@@ -62,23 +76,58 @@ func _move_left():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed and scroll_area.has_point(event.position):
-				dragging = true
-				last_mouse_x = event.position.x
+			if event.pressed:
+				for btn in buttons:
+					if btn.get_rect().has_point(event.position) and btn not in returning_buttons:
+						dragging = true
+						dragging_button = btn
+						original_position = dragging_button.global_position
+						break  # После break не может быть elif на этом же уровне
+
+				# Убираем elif, так как break уже выходит из цикла
+				if not dragging_button and scroll_area.has_point(event.position):
+					dragging = true
+					last_mouse_x = event.position.x
+
 			else:
+				if dragging_button:
+					if center_area.has_point(dragging_button.global_position):
+						# Кнопка мгновенно телепортируется обратно и срабатывает функция
+						dragging_button.global_position = original_position
+						process_button_action(dragging_button)
+					else:
+						# Кнопка плавно возвращается за 2 секунды и не реагирует на клики в это время
+						returning_buttons[dragging_button] = true
+						var tween = get_tree().create_tween()
+						tween.tween_property(dragging_button, "global_position", original_position, 2)
+						await tween.finished
+						returning_buttons.erase(dragging_button)  # После возврата кнопка снова кликабельна
+					dragging_button = null
 				dragging = false
 
-	if event is InputEventMouseMotion and dragging:
-		var delta_x = event.position.x - last_mouse_x
+	if event is InputEventMouseMotion:
+		if dragging and dragging_button:
+			dragging_button.global_position += event.relative
+		elif dragging and not dragging_button:
+			var delta_x = event.position.x - last_mouse_x
+			if delta_x < -20: 
+				_move_left()
+				last_mouse_x = event.position.x
+			elif delta_x > 20:  
+				_move_right()
+				last_mouse_x = event.position.x
 
-		if delta_x < -20: 
-			_move_left() 
-			last_mouse_x = event.position.x
-
-		elif delta_x > 20:  
-			_move_right()  
-			last_mouse_x = event.position.x
-
+func process_button_action(button):
+	if button == $Button6:
+		button6()
+	elif button == $Button2:
+		button2()
+	elif button == $Button4:
+		button4()
+	elif button == $Button5:
+		button5()
+	elif button == $Button:
+		button()
 
 func check_lives():
 	if Main.lives <= 0:
@@ -140,6 +189,10 @@ func close_game():
 
 func restart_game():
 	get_tree().reload_current_scene()
+
+
+
+
 
 
 

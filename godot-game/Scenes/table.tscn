@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c430tj11bcy5g"]
+[gd_scene load_steps=12 format=3 uid="uid://c430tj11bcy5g"]
 
 [ext_resource type="Texture2D" uid="uid://0i1i01k6q123" path="res://button.png" id="1_0xndo"]
 [ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="1_xqsq7"]
@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://xlfl6sxntdta" path="res://button_black.png" id="4_usajj"]
 [ext_resource type="Texture2D" uid="uid://c3ggs34olhjrm" path="res://restart.png" id="7_usajj"]
 [ext_resource type="Texture2D" uid="uid://caw14qyw0ak8v" path="res://close.png" id="8_o4lkm"]
+[ext_resource type="Texture2D" uid="uid://buttklo4qbat8" path="res://cust_area.png" id="9_xexre"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usajj"]
 texture = ExtResource("2_5cpa6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ntqo"]
+texture = ExtResource("9_xexre")
 
 [node name="table" type="Node2D"]
 script = ExtResource("1_xqsq7")
@@ -94,12 +98,15 @@ offset_bottom = 8.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="Panel2" type="Panel" parent="."]
+custom_minimum_size = Vector2(150, 113)
+offset_left = 844.0
+offset_top = 379.0
+offset_right = 994.0
+offset_bottom = 492.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ntqo")
+
 [connection signal="button_down" from="ButtonLeft" to="." method="_move_left"]
 [connection signal="button_down" from="ButtonRight" to="." method="_move_right"]
-[connection signal="button_down" from="Button" to="." method="button"]
-[connection signal="button_down" from="Button2" to="." method="button2"]
-[connection signal="button_down" from="Button4" to="." method="button4"]
-[connection signal="button_down" from="Button5" to="." method="button5"]
-[connection signal="button_down" from="Button6" to="." method="button6"]
 [connection signal="button_down" from="ButtonClose" to="." method="close_game"]
 [connection signal="button_down" from="ButtonRestart" to="." method="restart_game"]
