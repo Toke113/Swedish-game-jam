@@ -20,10 +20,6 @@ signal move_customer_2
 signal move_customer_3
 signal move_customer_4
 
-func _process(delta: float) -> void:
-	print("\n\nmc ",Main.lives)
-	print("\np ",Main.points)
-	print("\ntimes ",Main.two_times)
 
 
 func _on_customer_change_customer() -> void:
