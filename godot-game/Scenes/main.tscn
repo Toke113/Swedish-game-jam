@@ -11,9 +11,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
 
-[node name="table" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(-220, 100)
-
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(903, 354)
 scale = Vector2(0.700125, 1)
@@ -29,6 +26,9 @@ position = Vector2(2882, 96)
 
 [node name="customer_4" parent="." instance=ExtResource("7_hptm8")]
 position = Vector2(3455, 134)
+
+[node name="table" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(6, 0)
 
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]
 [connection signal="move_customer_1" from="." to="customer_1" method="_on_main_move_customer_1"]
