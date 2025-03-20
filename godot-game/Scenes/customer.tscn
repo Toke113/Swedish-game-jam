@@ -1,28 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cilar20aja0cc"]
+[gd_scene load_steps=4 format=3 uid="uid://cilar20aja0cc"]
 
-[ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="1_7c3kf"]
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_7c3kf")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://pc0mudrf31k1" path="res://Assets/Funky lady/Funky_neutral.png" id="2_7c3kf"]
 
 [sub_resource type="AudioStream" id="AudioStream_7c3kf"]
 
 [node name="customer" type="Node2D"]
 rotation = -6.28319
 script = ExtResource("1_fp685")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.085, 0.085)
-sprite_frames = SubResource("SpriteFrames_7c3kf")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 8.0
@@ -53,6 +38,18 @@ offset_bottom = 8.0
 stream = SubResource("AudioStream_7c3kf")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+
+[node name="FunkyNeutral" type="Sprite2D" parent="."]
+texture = ExtResource("2_7c3kf")
+
+[node name="FunkyAngry" type="Sprite2D" parent="."]
+visible = false
+
+[node name="FunkyFailed" type="Sprite2D" parent="."]
+visible = false
+
+[node name="FunkyWon" type="Sprite2D" parent="."]
+visible = false
 
 [connection signal="change_customer" from="." to="." method="_on_change_customer"]
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]

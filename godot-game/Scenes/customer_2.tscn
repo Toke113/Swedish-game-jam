@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3nyp6al7matu"]
+[gd_scene load_steps=9 format=3 uid="uid://d3nyp6al7matu"]
 
 [ext_resource type="Script" uid="uid://b2clqul8qk3ia" path="res://Scripts/customer_2.gd" id="1_1q40j"]
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_6htll"]
+[ext_resource type="Texture2D" uid="uid://ccj2jb5p5qcau" path="res://Assets/Elegant/Elegant_neutral.png" id="3_7ogpk"]
+[ext_resource type="Texture2D" uid="uid://bvu2oiruohdw3" path="res://Assets/Elegant/Elegant_angry.png" id="4_70imj"]
+[ext_resource type="Texture2D" uid="uid://cmh66ir6mfq6g" path="res://Assets/Elegant/Elegant_failed.png" id="5_dx8y0"]
+[ext_resource type="Texture2D" uid="uid://osgrqngw6ksa" path="res://Assets/Elegant/Elegant_won.png" id="6_3042g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
 animations = [{
@@ -52,6 +56,21 @@ offset_bottom = 8.0
 stream = SubResource("AudioStream_1q40j")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+
+[node name="ElegantNeutral" type="Sprite2D" parent="."]
+texture = ExtResource("3_7ogpk")
+
+[node name="ElegantAngry" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_70imj")
+
+[node name="ElegantFailed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_dx8y0")
+
+[node name="ElegantWon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_3042g")
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
 [connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]
