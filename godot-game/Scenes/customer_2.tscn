@@ -1,31 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3nyp6al7matu"]
+[gd_scene load_steps=7 format=3 uid="uid://d3nyp6al7matu"]
 
 [ext_resource type="Script" uid="uid://b2clqul8qk3ia" path="res://Scripts/customer_2.gd" id="1_1q40j"]
-[ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_6htll"]
 [ext_resource type="Texture2D" uid="uid://ccj2jb5p5qcau" path="res://Assets/Elegant/Elegant_neutral.png" id="3_7ogpk"]
 [ext_resource type="Texture2D" uid="uid://bvu2oiruohdw3" path="res://Assets/Elegant/Elegant_angry.png" id="4_70imj"]
 [ext_resource type="Texture2D" uid="uid://cmh66ir6mfq6g" path="res://Assets/Elegant/Elegant_failed.png" id="5_dx8y0"]
 [ext_resource type="Texture2D" uid="uid://osgrqngw6ksa" path="res://Assets/Elegant/Elegant_won.png" id="6_3042g"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_6htll")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="AudioStream" id="AudioStream_1q40j"]
 
 [node name="customer_2" type="Node2D"]
 script = ExtResource("1_1q40j")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.085, 0.085)
-sprite_frames = SubResource("SpriteFrames_7c3kf")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 8.0

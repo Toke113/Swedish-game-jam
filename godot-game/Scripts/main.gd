@@ -1,30 +1,33 @@
 extends Node2D
 
 
-var points=0:
-	get:
-		return points
-	set(new_points):
-		points_changed.emit()
-		points = new_points
+var points=0
 		
-var lives=3:
-	get:
-		return lives
-	set(new_lives):
-		lives_changed.emit()
-		lives = new_lives
+var lives=3
 		
-var two_times=2:
-	get:
-		return two_times
-	set(new_two_times):
-		two_times_changed.emit(new_two_times)
-		two_times = new_two_times
+var two_times=2
 		
 var threshold = 6
 var characters=1
 var curr_customer = 0
+
+var two_times_tracker = 2:
+	get:
+		return two_times_tracker
+	set(new_two_times):
+		two_times_changed.emit(new_two_times)
+		
+var lives_tracker = 3:
+	get:
+		return lives_tracker
+	set(new_lives):
+		lives_changed.emit(new_lives)
+
+var points_tracker = 0:
+	get:
+		return points_tracker
+	set(new_points):
+		points_changed.emit(new_points)
 
 signal lives_changed
 signal points_changed
@@ -34,14 +37,15 @@ signal move_customer_2
 signal move_customer_3
 signal move_customer_4
 
+func _process(delta: float) -> void:
+	two_times_tracker = Main.two_times
+	lives_tracker = Main.lives
+	points_tracker = Main.points
 
 func _on_customer_change_customer() -> void:
 	print_debug("lives = " + str(lives))
 	move_customer_1.emit()
 	print_debug("two_times = " + str(two_times))
-
-
-
 
 
 func _on_customer_3_change_customer() -> void:

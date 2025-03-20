@@ -10,6 +10,7 @@ var timer_started:bool = false
 var enter_store:bool = false
 var exit_store:bool = false
 var hint_played:bool = false
+var two_times_changed:bool = false
 
 signal change_customer
 signal lost_customer
@@ -19,7 +20,7 @@ signal active_customer
 
 func _ready() -> void:
 	desired_music = 2
-	time = 2
+	time = 10
 	hint = "I love the number 2"
 	$Timer/time_left.wait_time = time
 	$Timer.max_value = time
@@ -64,23 +65,26 @@ func _on_play_hint_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_main_points_changed() -> void:
-	if current_customer:
+func _on_main_points_changed(points) -> void:
+	if current_customer && points != 0:
 		exit_store = true
 		$Timer.queue_free()
 		change_customer.emit()
 
 
 func _on_main_two_times_changed(two_times) -> void:
-	#print_debug(two_times)
 	if current_customer:
-		if two_times == 2:
+		if two_times == 2 && !two_times_changed:
 			pass
 		elif two_times == 1:
+			
+			two_times_changed = true
 			pass #change hint
-		elif two_times == 0:
+		elif two_times == 2 && two_times_changed:
+			print_debug(two_times)
 			exit_store = true
 			$Timer.queue_free()
+			two_times_changed = false
 			change_customer.emit()
 		else:
 			pass

@@ -31,8 +31,10 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -400.999
+offset_top = -117.002
+offset_right = -392.999
+offset_bottom = -109.002
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = SubResource("AudioStream_7c3kf")
