@@ -11,24 +11,24 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
 
+[node name="table" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(6, 0)
+
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(903, 354)
+position = Vector2(932, 362)
 scale = Vector2(0.700125, 1)
 
 [node name="customer_1" parent="." instance=ExtResource("4_6bp64")]
-position = Vector2(1901, 71)
+position = Vector2(1730, 230)
 
 [node name="customer_2" parent="." instance=ExtResource("5_344ge")]
 position = Vector2(2446, 90)
 
 [node name="customer_3" parent="." instance=ExtResource("6_ynf5e")]
-position = Vector2(2882, 96)
+position = Vector2(2443, 75)
 
 [node name="customer_4" parent="." instance=ExtResource("7_hptm8")]
-position = Vector2(3455, 134)
-
-[node name="table" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(6, 0)
+position = Vector2(2436, 88)
 
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]
 [connection signal="move_customer_1" from="." to="customer_1" method="_on_main_move_customer_1"]
@@ -38,6 +38,7 @@ position = Vector2(6, 0)
 [connection signal="move_customer_3" from="." to="customer_3" method="_on_main_move_customer_3"]
 [connection signal="move_customer_3" from="." to="customer_4" method="_on_main_move_customer_3"]
 [connection signal="move_customer_4" from="." to="customer_4" method="_on_main_move_customer_4"]
+[connection signal="change_customer" from="customer" to="." method="_on_customer_change_customer"]
 [connection signal="change_customer" from="customer_1" to="." method="_on_customer_1_change_customer"]
 [connection signal="change_customer" from="customer_2" to="." method="_on_customer_2_change_customer"]
 [connection signal="change_customer" from="customer_3" to="." method="_on_customer_3_change_customer"]

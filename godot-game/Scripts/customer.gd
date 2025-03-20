@@ -23,15 +23,32 @@ func _ready() -> void:
 	$Timer.value = time
 	
 func _process(delta: float) -> void:
-	if current_customer:
+	if exit_store:
+		
+		var target_position = Vector2(-485,285)
+		var speed = 400
+		var direction = (target_position-position).normalized()
+			
+		position += direction * speed * delta
+			
+		if position.distance_to(target_position) < Main.threshold:
+			$".".queue_free()
+
+	
+	elif current_customer:
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
 		if !timer_started:
 			$Timer/time_left.start()
 			timer_started = true
+	
 
 
 func _on_time_left_timeout() -> void:
-	
-	$".".queue_free()
+	Main.lives -= 1
+	exit_store = true
+	$Timer.queue_free()
 	change_customer.emit()
+	
+
+	
