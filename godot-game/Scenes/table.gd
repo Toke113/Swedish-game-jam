@@ -52,14 +52,16 @@ func _process(delta):
 	center_area.size = panel2.size
 
 func update_buttons(animated = true):
-	var center_index = 1  # Центральная кнопка всегда вторая
-
+	var center_index = 2  # Третья кнопка центральная
+	
 	for i in range(buttons.size()):
 		var target_pos = positions[i]
-		var scale_factor = 0.8  # Маленькие кнопки
-
+		var scale_factor = 0.8  # По умолчанию - самые маленькие кнопки (нулевая и четвёртая)
+		
 		if i == center_index:
-			scale_factor = 1.2  # Центральная кнопка больше
+			scale_factor = 1.2  # Центральная кнопка - самая большая
+		elif i == center_index - 1 or i == center_index + 1:
+			scale_factor = 1.0  # Первая и третья кнопки - среднего размера
 
 		# Анимируем перемещение и изменение размера кнопок
 		if animated:
@@ -70,13 +72,14 @@ func update_buttons(animated = true):
 			buttons[i].global_position = target_pos
 			buttons[i].scale = Vector2(scale_factor, scale_factor)
 
-		# Видимость только у 3 центральных кнопок
-		buttons[i].visible = i >= center_index - 1 and i <= center_index + 1
+		# Теперь видим 5 кнопок вместо 3
+		buttons[i].visible = i >= center_index - 2 and i <= center_index + 2
 
 		# Только центральная кнопка принимает клики
 		buttons[i].mouse_filter = Control.MOUSE_FILTER_IGNORE if i != center_index else Control.MOUSE_FILTER_STOP
 
-	play_music_for_button(buttons[1])
+	# Воспроизводим звук центральной кнопки
+	play_music_for_button(buttons[center_index])
 	calculate_scroll_area()
 
 func play_music_for_button(button):
@@ -104,9 +107,9 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				if buttons[1].get_rect().has_point(event.position) and buttons[1] not in returning_buttons:
+				if buttons[2].get_rect().has_point(event.position) and buttons[2] not in returning_buttons:
 					dragging = true
-					dragging_button = buttons[1]
+					dragging_button = buttons[2]
 					original_position = dragging_button.global_position
 					offset = dragging_button.global_position - event.position
 				elif scroll_area.has_point(event.position):
@@ -120,7 +123,7 @@ func _input(event):
 					else:
 						returning_buttons[dragging_button] = true
 						var return_tween = get_tree().create_tween()
-						return_tween.tween_property(dragging_button, "global_position", original_position, 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+						return_tween.tween_property(dragging_button, "global_position", original_position, 2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 						await return_tween.finished
 						returning_buttons.erase(dragging_button)
 					dragging_button = null
@@ -171,7 +174,7 @@ func process_button_action(button):
 
 func check_lives():
 	if Main.lives <= 0:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Scenes/losescene.tscn")
 
 func check_two_times():
 	if Main.two_times == 0:
@@ -268,7 +271,7 @@ func button10():
 func button11():
 	if Main.characters == 10:	
 		Main.points += 1
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Scenes/winscene.tscn")
 	else:
 		Main.two_times -= 1
 		check_two_times()
@@ -279,6 +282,8 @@ func close_game():
 	get_tree().quit()
 
 func restart_game():
+	audio_player.stop()
+	audio_player.play()
 	get_tree().reload_current_scene()
 
 

@@ -42,27 +42,27 @@ offset_bottom = 911.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 898.0
+offset_left = 744.0
 offset_top = 803.0
-offset_right = 996.0
+offset_right = 842.0
 offset_bottom = 901.0
 theme_override_icons/icon = ExtResource("2_xqsq7")
 
 [node name="Button4" type="Button" parent="."]
-offset_left = 1106.0
-offset_top = 799.0
-offset_right = 1204.0
-offset_bottom = 897.0
+offset_left = 923.0
+offset_top = 802.0
+offset_right = 1021.0
+offset_bottom = 900.0
 theme_override_icons/icon = ExtResource("3_5cpa6")
 
 [node name="Button6" type="Button" parent="."]
-offset_left = 698.0
-offset_top = 806.0
-offset_right = 796.0
-offset_bottom = 904.0
+offset_left = 585.0
+offset_top = 801.0
+offset_right = 683.0
+offset_bottom = 899.0
 theme_override_icons/icon = ExtResource("4_usajj")
 
-[node name="Button3" type="Button" parent="."]
+[node name="ButtonRestart" type="Button" parent="."]
 offset_left = 1607.0
 offset_top = 23.0
 offset_right = 1705.0
@@ -76,33 +76,27 @@ offset_right = 1879.0
 offset_bottom = 127.0
 theme_override_icons/icon = ExtResource("8_o4lkm")
 
-[node name="ButtonRestart" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Button" type="Button" parent="."]
-visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
+offset_left = 1283.0
+offset_top = 799.0
+offset_right = 1381.0
+offset_bottom = 897.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Button5" type="Button" parent="."]
-visible = false
-offset_left = 995.0
-offset_top = 894.0
-offset_right = 1093.0
-offset_bottom = 992.0
+offset_left = 1105.0
+offset_top = 801.0
+offset_right = 1203.0
+offset_bottom = 899.0
 theme_override_icons/icon = ExtResource("1_0xndo")
 
 [node name="Panel2" type="Panel" parent="."]
 custom_minimum_size = Vector2(150, 113)
-offset_left = 844.0
+offset_left = 896.0
 offset_top = 379.0
-offset_right = 994.0
+offset_right = 1046.0
 offset_bottom = 492.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ntqo")
 
@@ -148,5 +142,5 @@ theme_override_icons/icon = ExtResource("1_0xndo")
 
 [connection signal="button_down" from="ButtonLeft" to="." method="_move_left"]
 [connection signal="button_down" from="ButtonRight" to="." method="_move_right"]
-[connection signal="button_down" from="ButtonClose" to="." method="close_game"]
 [connection signal="button_down" from="ButtonRestart" to="." method="restart_game"]
+[connection signal="button_down" from="ButtonClose" to="." method="close_game"]
