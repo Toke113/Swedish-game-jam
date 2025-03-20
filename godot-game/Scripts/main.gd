@@ -34,7 +34,6 @@ signal move_customer_2
 signal move_customer_3
 signal move_customer_4
 
-
 func _on_customer_change_customer() -> void:
 	print_debug("lives = " + str(lives))
 	move_customer_1.emit()
