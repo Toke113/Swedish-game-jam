@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnxfijmvifjor"]
+[gd_scene load_steps=5 format=3 uid="uid://bnxfijmvifjor"]
 
 [ext_resource type="Script" uid="uid://f2w7ad08tqdp" path="res://Scripts/customer_1.gd" id="1_35nt4"]
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_2cdtp"]
@@ -13,6 +13,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AudioStream" id="AudioStream_35nt4"]
 
 [node name="customer_1" type="Node2D"]
 script = ExtResource("1_35nt4")
@@ -41,5 +43,10 @@ show_percentage = false
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
+
+[node name="Hint 1" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStream_35nt4")
+
+[node name="Hint 2" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]

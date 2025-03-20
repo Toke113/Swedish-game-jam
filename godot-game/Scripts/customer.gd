@@ -11,6 +11,7 @@ var enter_store:bool = false
 var exit_store:bool = false
 
 signal change_customer
+signal lost_customer
 
 #TODO Function that sets the value of the customer
 
@@ -45,7 +46,7 @@ func _process(delta: float) -> void:
 
 
 func _on_time_left_timeout() -> void:
-	Main.lives -= 1
+	lost_customer.emit()
 	exit_store = true
 	$Timer.queue_free()
 	change_customer.emit()
