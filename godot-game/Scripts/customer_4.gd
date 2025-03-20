@@ -12,6 +12,7 @@ var enter_store:bool = false
 var exit_store:bool = false
 
 signal change_customer
+signal lost_customer
 
 #TODO Function that sets the value of the customer
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	desired_music = 2
 	time = 2
 	hint = "I love the number 2"
+	Main.characters = desired_music
 	
 	$Timer/time_left.wait_time = time
 	if current_customer:
@@ -71,6 +73,7 @@ func _process(delta: float) -> void:
 	
 
 func _on_time_left_timeout() -> void:
+	lost_customer.emit()
 	exit_store = true
 	$Timer.queue_free()
 	change_customer.emit()
