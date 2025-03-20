@@ -23,7 +23,7 @@ var offset = Vector2.ZERO
 
 func _ready():
 	buttons = [
-		$Button6, $Button2, $Button4, $Button5, $Button
+		$Button6, $Button2, $Button4, $Button5, $Button,$Button7, $Button8, $Button9, $Button10, $Button11
 	]
 
 	button_sounds = {
@@ -31,7 +31,12 @@ func _ready():
 		$Button2: preload("res://sound2.mp3"),
 		$Button4: preload("res://sound3.mp3"),
 		$Button5: preload("res://sound4.mp3"),
-		$Button: preload("res://sound5.mp3")
+		$Button: preload("res://sound5.mp3"),
+		$Button7: preload("res://sound1.mp3"),
+		$Button8: preload("res://sound2.mp3"),
+		$Button9: preload("res://sound3.mp3"),
+		$Button10: preload("res://sound4.mp3"),
+		$Button11: preload("res://sound5.mp3")
 	}
 
 	# Запоминаем исходные позиции кнопок
@@ -152,6 +157,17 @@ func process_button_action(button):
 		button5()
 	elif button == $Button:
 		button()
+	elif button == $Button7:
+		button7()
+	elif button == $Button8:
+		button8()
+	elif button == $Button9:
+		button9()
+	elif button == $Button10:
+		button10()
+	elif button == $Button11:
+		button11()
+		
 
 func check_lives():
 	if Main.lives <= 0:
@@ -203,11 +219,62 @@ func button5():
 func button6():
 	if Main.characters == 5:	
 		Main.points += 1
-		get_tree().quit()
+		Main.characters += 1
+		Main.two_times = 2
 	else:
 		Main.two_times -= 1
 		check_two_times()
 
+
+
+
+
+func button7():
+	if Main.characters == 6:
+		Main.points += 1
+		Main.characters += 1
+		Main.two_times = 2
+	else:
+		Main.two_times -= 1
+		check_two_times()
+
+func button8():
+	if Main.characters == 7:	
+		Main.points += 1
+		Main.characters += 1
+		Main.two_times = 2
+	else:
+		Main.two_times -= 1
+		check_two_times()
+
+func button9():
+	if Main.characters == 8:	
+		Main.points += 1
+		Main.characters += 1
+		Main.two_times = 2
+	else:
+		Main.two_times -= 1
+		check_two_times()
+
+func button10():
+	if Main.characters == 9:	
+		Main.points += 1
+		Main.characters += 1
+		Main.two_times = 2
+	else:
+		Main.two_times -= 1
+		check_two_times()
+
+func button11():
+	if Main.characters == 10:	
+		Main.points += 1
+		get_tree().quit()
+	else:
+		Main.two_times -= 1
+		check_two_times()
+		
+		
+		
 func close_game():
 	get_tree().quit()
 
