@@ -1,18 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg8gdyjoqv88j"]
+[gd_scene load_steps=10 format=3 uid="uid://bg8gdyjoqv88j"]
 
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://dqui2dy5nchad" path="res://environment-background.jpg" id="2_344ge"]
 [ext_resource type="PackedScene" uid="uid://cilar20aja0cc" path="res://Scenes/customer.tscn" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bnxfijmvifjor" path="res://Scenes/customer_1.tscn" id="4_6bp64"]
 [ext_resource type="PackedScene" uid="uid://d3nyp6al7matu" path="res://Scenes/customer_2.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bspgfl5ifdmkg" path="res://Scenes/customer_3.tscn" id="6_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://bmcp8yrrckgni" path="res://Scenes/customer_4.tscn" id="7_hptm8"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynf5e"]
+texture = ExtResource("2_344ge")
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jjgbg")
 
-[node name="table" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(6, 0)
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1900, 1080)
+offset_right = 1900.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ynf5e")
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(932, 362)
@@ -35,6 +42,9 @@ position = Vector2(2436, 88)
 [node name="Heart2" type="Sprite2D" parent="."]
 
 [node name="Heart3" type="Sprite2D" parent="."]
+
+[node name="table" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(6, 0)
 
 [connection signal="lives_changed" from="." to="." method="_on_lives_changed"]
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]

@@ -1,66 +1,102 @@
-[gd_scene load_steps=12 format=3 uid="uid://c430tj11bcy5g"]
+[gd_scene load_steps=32 format=3 uid="uid://c430tj11bcy5g"]
 
-[ext_resource type="Texture2D" uid="uid://0i1i01k6q123" path="res://button.png" id="1_0xndo"]
 [ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="1_xqsq7"]
-[ext_resource type="Texture2D" uid="uid://beboxux1dsubs" path="res://menu_songs.png" id="2_5cpa6"]
-[ext_resource type="Texture2D" uid="uid://dguumbicyh1ba" path="res://button_pink.png" id="2_xqsq7"]
-[ext_resource type="Texture2D" uid="uid://c2r2mla5peg6e" path="res://button_yellow.png" id="3_5cpa6"]
-[ext_resource type="Texture2D" uid="uid://xlfl6sxntdta" path="res://button_black.png" id="4_usajj"]
+[ext_resource type="Texture2D" uid="uid://cl1nnl7w0vi75" path="res://counter.png" id="2_xexre"]
+[ext_resource type="Texture2D" uid="uid://bg7xqimfnf27t" path="res://go-left.png" id="3_x0duj"]
+[ext_resource type="Texture2D" uid="uid://ji6nwn0c0f2l" path="res://go-right.png" id="4_filji"]
+[ext_resource type="Texture2D" uid="uid://d370uv0iyprif" path="res://latin-icon.png" id="5_llvxf"]
+[ext_resource type="Texture2D" uid="uid://8mrywo2qjcro" path="res://kpop-icon.png" id="6_x0duj"]
+[ext_resource type="Texture2D" uid="uid://dob1g6txxqg03" path="res://rock-icon.png" id="7_oi710"]
 [ext_resource type="Texture2D" uid="uid://c3ggs34olhjrm" path="res://restart.png" id="7_usajj"]
 [ext_resource type="Texture2D" uid="uid://caw14qyw0ak8v" path="res://close.png" id="8_o4lkm"]
 [ext_resource type="Texture2D" uid="uid://buttklo4qbat8" path="res://cust_area.png" id="9_xexre"]
+[ext_resource type="Texture2D" uid="uid://b7m4dqbkqf6si" path="res://hiphop-icon.png" id="10_k47uh"]
+[ext_resource type="Texture2D" uid="uid://do5bnqisle0fl" path="res://house-icon.png" id="11_xhfwg"]
+[ext_resource type="Texture2D" uid="uid://b037kew57bqoa" path="res://pop-icon.png" id="13_5kx35"]
+[ext_resource type="Texture2D" uid="uid://c1ydr1axhxobn" path="res://metal-icon.png" id="14_3leha"]
+[ext_resource type="Texture2D" uid="uid://c2uk3255ap8qj" path="res://classical-icon.png" id="15_bfjrb"]
+[ext_resource type="Texture2D" uid="uid://cpb0ko2fee62v" path="res://country-icon.png" id="16_pxje1"]
+[ext_resource type="Texture2D" uid="uid://jufsgfe37ffn" path="res://jazz-icon.png" id="17_rgeaq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usajj"]
-texture = ExtResource("2_5cpa6")
+texture = ExtResource("2_xexre")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_somge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxtnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k47uh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_filji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhfwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sln7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wn4jv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ntqo"]
 texture = ExtResource("9_xexre")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4463s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssv1w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cc7k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1r26c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fq15h"]
 
 [node name="table" type="Node2D"]
 script = ExtResource("1_xqsq7")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(1080, 0)
-offset_left = -3.0
-offset_top = 756.0
-offset_right = 1908.0
-offset_bottom = 1087.0
+custom_minimum_size = Vector2(1900, 1080)
+offset_top = -559.0
+offset_right = 1900.0
+offset_bottom = 1072.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_usajj")
 
 [node name="ButtonLeft" type="Button" parent="."]
-offset_left = 253.0
-offset_top = 804.0
-offset_right = 351.0
-offset_bottom = 902.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 70.0
+offset_top = 726.0
+offset_right = 326.0
+offset_bottom = 982.0
+theme_override_icons/icon = ExtResource("3_x0duj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_somge")
 
 [node name="ButtonRight" type="Button" parent="."]
-offset_left = 1606.0
-offset_top = 813.0
-offset_right = 1704.0
-offset_bottom = 911.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 1619.0
+offset_top = 719.0
+offset_right = 1875.0
+offset_bottom = 975.0
+theme_override_icons/icon = ExtResource("4_filji")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bxtnr")
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 744.0
-offset_top = 803.0
-offset_right = 842.0
-offset_bottom = 901.0
-theme_override_icons/icon = ExtResource("2_xqsq7")
+offset_left = 607.0
+offset_top = 762.0
+offset_right = 757.0
+offset_bottom = 912.0
+theme_override_icons/icon = ExtResource("5_llvxf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k47uh")
 
 [node name="Button4" type="Button" parent="."]
-offset_left = 923.0
-offset_top = 802.0
-offset_right = 1021.0
-offset_bottom = 900.0
-theme_override_icons/icon = ExtResource("3_5cpa6")
+offset_left = 889.0
+offset_top = 763.0
+offset_right = 1039.0
+offset_bottom = 913.0
+theme_override_icons/icon = ExtResource("6_x0duj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_filji")
 
 [node name="Button6" type="Button" parent="."]
-offset_left = 585.0
-offset_top = 801.0
-offset_right = 683.0
-offset_bottom = 899.0
-theme_override_icons/icon = ExtResource("4_usajj")
+offset_left = 354.0
+offset_top = 765.0
+offset_right = 504.0
+offset_bottom = 915.0
+theme_override_icons/icon = ExtResource("7_oi710")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xhfwg")
 
 [node name="ButtonRestart" type="Button" parent="."]
 offset_left = 1607.0
@@ -79,66 +115,74 @@ theme_override_icons/icon = ExtResource("8_o4lkm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Button" type="Button" parent="."]
-offset_left = 1283.0
-offset_top = 799.0
-offset_right = 1381.0
-offset_bottom = 897.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 1431.0
+offset_top = 758.0
+offset_right = 1581.0
+offset_bottom = 908.0
+theme_override_icons/icon = ExtResource("10_k47uh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sln7q")
 
 [node name="Button5" type="Button" parent="."]
-offset_left = 1105.0
-offset_top = 801.0
-offset_right = 1203.0
-offset_bottom = 899.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 1160.0
+offset_top = 760.0
+offset_right = 1310.0
+offset_bottom = 910.0
+theme_override_icons/icon = ExtResource("11_xhfwg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wn4jv")
 
 [node name="Panel2" type="Panel" parent="."]
-custom_minimum_size = Vector2(150, 113)
-offset_left = 896.0
-offset_top = 379.0
-offset_right = 1046.0
-offset_bottom = 492.0
+custom_minimum_size = Vector2(200, 300)
+offset_left = 832.0
+offset_top = 310.0
+offset_right = 1032.0
+offset_bottom = 610.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ntqo")
 
 [node name="Button7" type="Button" parent="."]
 visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 1279.0
+offset_top = 903.0
+offset_right = 1429.0
+offset_bottom = 1053.0
+theme_override_icons/icon = ExtResource("13_5kx35")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4463s")
 
 [node name="Button8" type="Button" parent="."]
 visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 591.0
+offset_top = 916.0
+offset_right = 741.0
+offset_bottom = 1066.0
+theme_override_icons/icon = ExtResource("14_3leha")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ssv1w")
 
 [node name="Button9" type="Button" parent="."]
 visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 885.0
+offset_top = 914.0
+offset_right = 1043.0
+offset_bottom = 1072.0
+theme_override_icons/icon = ExtResource("15_bfjrb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6cc7k")
+icon = ExtResource("15_bfjrb")
 
 [node name="Button10" type="Button" parent="."]
 visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 415.0
+offset_top = 919.0
+offset_right = 565.0
+offset_bottom = 1069.0
+theme_override_icons/icon = ExtResource("16_pxje1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1r26c")
 
 [node name="Button11" type="Button" parent="."]
 visible = false
-offset_left = 791.0
-offset_top = 893.0
-offset_right = 889.0
-offset_bottom = 991.0
-theme_override_icons/icon = ExtResource("1_0xndo")
+offset_left = 1078.0
+offset_top = 909.0
+offset_right = 1228.0
+offset_bottom = 1059.0
+theme_override_icons/icon = ExtResource("17_rgeaq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fq15h")
 
 [connection signal="button_down" from="ButtonLeft" to="." method="_move_left"]
 [connection signal="button_down" from="ButtonRight" to="." method="_move_right"]
