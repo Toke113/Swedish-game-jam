@@ -1,5 +1,10 @@
 extends Node2D
 
+var accumulated_scroll = 0.0  # Накопленный сдвиг
+var scroll_threshold = 300  # Увеличиваем расстояние, которое нужно пройти мыши для смены кнопок
+var max_scroll_speed = 50 
+
+
 var buttons = []
 var positions = []
 var target_positions = []
@@ -122,12 +127,19 @@ func _input(event):
 				dragging_button.global_position = event.position + offset
 			elif not dragging_button:
 				var delta_x = event.position.x - last_mouse_x
-				if delta_x < -20: 
+				delta_x = clamp(delta_x, -max_scroll_speed, max_scroll_speed)  # Ограничиваем скорость перемещения
+				
+				accumulated_scroll += delta_x  # Накопливаем движение
+
+				if accumulated_scroll <= -scroll_threshold:
 					_move_left()
-					last_mouse_x = event.position.x
-				elif delta_x > 20:  
+					accumulated_scroll = 0  # Сбрасываем накопленный сдвиг
+				elif accumulated_scroll >= scroll_threshold:
 					_move_right()
-					last_mouse_x = event.position.x
+					accumulated_scroll = 0  # Сбрасываем накопленный сдвиг
+
+				last_mouse_x = event.position.x
+
 
 func process_button_action(button):
 	if button == $Button6:
