@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bspgfl5ifdmkg"]
+[gd_scene load_steps=6 format=3 uid="uid://bspgfl5ifdmkg"]
 
 [ext_resource type="Script" uid="uid://cb845clh3j8an" path="res://Scripts/customer_3.gd" id="1_m5vov"]
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_l54us"]
+[ext_resource type="AudioStream" uid="uid://vyiygaxmp5m7" path="res://Assets/Audio/Hints/oldman-voicemessage1.mp3" id="3_0m3v6"]
+[ext_resource type="AudioStream" uid="uid://ef2ku6we4nbq" path="res://Assets/Audio/Hints/oldman-voicemessage2.mp3" id="4_g7vuq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
 animations = [{
@@ -13,8 +15,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="AudioStream" id="AudioStream_m5vov"]
 
 [node name="customer_3" type="Node2D"]
 script = ExtResource("1_m5vov")
@@ -49,9 +49,10 @@ offset_right = 8.0
 offset_bottom = 8.0
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
-stream = SubResource("AudioStream_m5vov")
+stream = ExtResource("3_0m3v6")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+stream = ExtResource("4_g7vuq")
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
 [connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]

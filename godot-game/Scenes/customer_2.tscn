@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3nyp6al7matu"]
+[gd_scene load_steps=8 format=3 uid="uid://d3nyp6al7matu"]
 
 [ext_resource type="Script" uid="uid://b2clqul8qk3ia" path="res://Scripts/customer_2.gd" id="1_1q40j"]
+[ext_resource type="AudioStream" uid="uid://c78a7tnytr53p" path="res://Assets/Audio/Hints/elitelady-voicemessage1.mp3" id="2_70imj"]
 [ext_resource type="Texture2D" uid="uid://ccj2jb5p5qcau" path="res://Assets/Elegant/Elegant_neutral.png" id="3_7ogpk"]
+[ext_resource type="AudioStream" uid="uid://dn2r47ex6tqwg" path="res://Assets/Audio/Hints/elitelady-voicemessage2.mp3" id="3_dx8y0"]
 [ext_resource type="Texture2D" uid="uid://bvu2oiruohdw3" path="res://Assets/Elegant/Elegant_angry.png" id="4_70imj"]
 [ext_resource type="Texture2D" uid="uid://cmh66ir6mfq6g" path="res://Assets/Elegant/Elegant_failed.png" id="5_dx8y0"]
 [ext_resource type="Texture2D" uid="uid://osgrqngw6ksa" path="res://Assets/Elegant/Elegant_won.png" id="6_3042g"]
-
-[sub_resource type="AudioStream" id="AudioStream_1q40j"]
 
 [node name="customer_2" type="Node2D"]
 script = ExtResource("1_1q40j")
@@ -33,13 +33,16 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 292.0
+offset_top = -171.0
+offset_right = 300.0
+offset_bottom = -163.0
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
-stream = SubResource("AudioStream_1q40j")
+stream = ExtResource("2_70imj")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+stream = ExtResource("3_dx8y0")
 
 [node name="ElegantNeutral" type="Sprite2D" parent="."]
 texture = ExtResource("3_7ogpk")

@@ -11,6 +11,7 @@ var moving:bool = false
 var enter_store:bool = false
 var exit_store:bool = false
 var hint_played:bool = false
+var two_times_changed:bool = false
 
 signal change_customer
 signal lost_customer
@@ -21,7 +22,7 @@ signal active_customer
 func _ready() -> void:
 	desired_music = 3
 	Main.characters = desired_music
-	time = 2
+	time = 10
 	hint = "I love the number 3"
 	
 	$Timer/time_left.wait_time = time
@@ -94,11 +95,17 @@ func _on_main_points_changed() -> void:
 
 func _on_main_two_times_changed(two_times) -> void:
 	if current_customer:
-		if two_times == 2:
+		if two_times == 2 && !two_times_changed:
 			pass
 		elif two_times == 1:
+			
+			two_times_changed = true
 			pass #change hint
-		elif two_times == 0:
+		elif two_times == 2 && two_times_changed:
+			print_debug(two_times)
 			exit_store = true
 			$Timer.queue_free()
+			two_times_changed = false
 			change_customer.emit()
+		else:
+			pass

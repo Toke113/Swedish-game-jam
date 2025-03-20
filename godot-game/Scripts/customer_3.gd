@@ -11,6 +11,7 @@ var moving:bool = false
 var enter_store:bool = false
 var exit_store:bool = false
 var hint_played:bool = false
+var two_times_changed:bool = false
 
 signal change_customer
 signal lost_customer
@@ -107,4 +108,18 @@ func _on_main_points_changed() -> void:
 
 
 func _on_main_two_times_changed(two_times) -> void:
-	pass # Replace with function body.
+	if current_customer:
+		if two_times == 2 && !two_times_changed:
+			pass
+		elif two_times == 1:
+			
+			two_times_changed = true
+			pass #change hint
+		elif two_times == 2 && two_times_changed:
+			print_debug(two_times)
+			exit_store = true
+			$Timer.queue_free()
+			two_times_changed = false
+			change_customer.emit()
+		else:
+			pass

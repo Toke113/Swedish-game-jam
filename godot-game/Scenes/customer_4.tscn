@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmcp8yrrckgni"]
+[gd_scene load_steps=6 format=3 uid="uid://bmcp8yrrckgni"]
 
 [ext_resource type="Script" uid="uid://cr22ka0vxfn85" path="res://Scripts/customer_4.gd" id="1_76vr1"]
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_3g78f"]
+[ext_resource type="AudioStream" uid="uid://pl756ol3ytai" path="res://Assets/Audio/Hints/Streetpunk-voicemessage1.mp3" id="3_coa3p"]
+[ext_resource type="AudioStream" uid="uid://b0enyswtyxawr" path="res://Assets/Audio/Hints/Streetpunk-voicemessage2.mp3" id="4_7m64d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
 animations = [{
@@ -13,8 +15,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="AudioStream" id="AudioStream_76vr1"]
 
 [node name="customer_4" type="Node2D"]
 script = ExtResource("1_76vr1")
@@ -49,9 +49,10 @@ offset_right = 8.0
 offset_bottom = 8.0
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
-stream = SubResource("AudioStream_76vr1")
+stream = ExtResource("3_coa3p")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+stream = ExtResource("4_7m64d")
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
 [connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]

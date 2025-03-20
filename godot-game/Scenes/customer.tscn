@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cilar20aja0cc"]
+[gd_scene load_steps=5 format=3 uid="uid://cilar20aja0cc"]
 
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
 [ext_resource type="Texture2D" uid="uid://pc0mudrf31k1" path="res://Assets/Funky lady/Funky_neutral.png" id="2_7c3kf"]
-
-[sub_resource type="AudioStream" id="AudioStream_7c3kf"]
+[ext_resource type="AudioStream" uid="uid://c4toalpcspias" path="res://Assets/Audio/Hints/funky-voicemessage1.mp3" id="2_qf3me"]
+[ext_resource type="AudioStream" uid="uid://cimpw7ujfxjil" path="res://Assets/Audio/Hints/funky-voicemessage2.mp3" id="3_vkxjs"]
 
 [node name="customer" type="Node2D"]
 rotation = -6.28319
@@ -37,9 +37,10 @@ offset_right = -392.999
 offset_bottom = -109.002
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
-stream = SubResource("AudioStream_7c3kf")
+stream = ExtResource("2_qf3me")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+stream = ExtResource("3_vkxjs")
 
 [node name="FunkyNeutral" type="Sprite2D" parent="."]
 texture = ExtResource("2_7c3kf")
