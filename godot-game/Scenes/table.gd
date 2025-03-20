@@ -1,9 +1,8 @@
-extends Node2D
+extends Node2D 
 
 var accumulated_scroll = 0.0  # Накопленный сдвиг
 var scroll_threshold = 300  # Увеличиваем расстояние, которое нужно пройти мыши для смены кнопок
 var max_scroll_speed = 50 
-
 
 var buttons = []
 var positions = []
@@ -20,10 +19,11 @@ var button_sounds = {}
 var center_area = Rect2()
 var returning_buttons = {}  # Отслеживание кнопок, которые возвращаются
 var offset = Vector2.ZERO
+var is_music_playing = false  # Флаг для отслеживания состояния музыки
 
 func _ready():
 	buttons = [
-		$Button6, $Button2, $Button4, $Button5, $Button,$Button7, $Button8, $Button9, $Button10, $Button11
+		$Button6, $Button2, $Button4, $Button5, $Button, $Button7, $Button8, $Button9, $Button10, $Button11
 	]
 
 	button_sounds = {
@@ -39,6 +39,9 @@ func _ready():
 		$Button11: preload("res://sound5.mp3")
 	}
 
+	# Музыка не играет при загрузке сцены
+	audio_player.stop()
+
 	# Запоминаем исходные позиции кнопок
 	for btn in buttons:
 		positions.append(btn.global_position)
@@ -47,7 +50,6 @@ func _ready():
 	calculate_scroll_area()
 
 func _process(delta):
-	# Центрируем область по Panel2
 	center_area.position = panel2.global_position - center_area.size / 2
 	center_area.size = panel2.size
 
@@ -56,14 +58,13 @@ func update_buttons(animated = true):
 	
 	for i in range(buttons.size()):
 		var target_pos = positions[i]
-		var scale_factor = 0.8  # По умолчанию - самые маленькие кнопки (нулевая и четвёртая)
+		var scale_factor = 0.8 
 		
 		if i == center_index:
-			scale_factor = 1.2  # Центральная кнопка - самая большая
+			scale_factor = 1.2  
 		elif i == center_index - 1 or i == center_index + 1:
-			scale_factor = 1.0  # Первая и третья кнопки - среднего размера
+			scale_factor = 1.0  
 
-		# Анимируем перемещение и изменение размера кнопок
 		if animated:
 			var tween = get_tree().create_tween()
 			tween.tween_property(buttons[i], "global_position", target_pos, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -72,19 +73,14 @@ func update_buttons(animated = true):
 			buttons[i].global_position = target_pos
 			buttons[i].scale = Vector2(scale_factor, scale_factor)
 
-		# Теперь видим 5 кнопок вместо 3
 		buttons[i].visible = i >= center_index - 2 and i <= center_index + 2
-
-		# Только центральная кнопка принимает клики
 		buttons[i].mouse_filter = Control.MOUSE_FILTER_IGNORE if i != center_index else Control.MOUSE_FILTER_STOP
 
-	# Воспроизводим звук центральной кнопки
-	play_music_for_button(buttons[center_index])
 	calculate_scroll_area()
 
 func play_music_for_button(button):
-	if button in button_sounds: 
-		audio_player.stream = button_sounds[button] 
+	if button in button_sounds:
+		audio_player.stream = button_sounds[button]
 		audio_player.play()
 
 func calculate_scroll_area():
@@ -105,8 +101,19 @@ func _move_left():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:
+				# Если музыка уже играет, остановим её
+				if is_music_playing:
+					audio_player.stop()
+					is_music_playing = false
+				# Иначе воспроизводим музыку
+				else:
+					play_music_for_button(buttons[2])
+					is_music_playing = true
+		elif event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				audio_player.stop()  # Музыка отключается при нажатии ЛКМ
 				if buttons[2].get_rect().has_point(event.position) and buttons[2] not in returning_buttons:
 					dragging = true
 					dragging_button = buttons[2]
@@ -135,21 +142,21 @@ func _input(event):
 				dragging_button.global_position = event.position + offset
 			elif not dragging_button:
 				var delta_x = event.position.x - last_mouse_x
-				delta_x = clamp(delta_x, -max_scroll_speed, max_scroll_speed)  # Ограничиваем скорость перемещения
+				delta_x = clamp(delta_x, -max_scroll_speed, max_scroll_speed)
 				
-				accumulated_scroll += delta_x  # Накопливаем движение
+				accumulated_scroll += delta_x
 
 				if accumulated_scroll <= -scroll_threshold:
 					_move_left()
-					accumulated_scroll = 0  # Сбрасываем накопленный сдвиг
+					accumulated_scroll = 0
 				elif accumulated_scroll >= scroll_threshold:
 					_move_right()
-					accumulated_scroll = 0  # Сбрасываем накопленный сдвиг
+					accumulated_scroll = 0
 
 				last_mouse_x = event.position.x
 
-
 func process_button_action(button):
+	audio_player.stop()
 	if button == $Button6:
 		button6()
 	elif button == $Button2:
@@ -170,7 +177,6 @@ func process_button_action(button):
 		button10()
 	elif button == $Button11:
 		button11()
-		
 
 func check_lives():
 	if Main.lives <= 0:
@@ -184,89 +190,40 @@ func check_two_times():
 		Main.characters += 1
 
 func button():
-	if Main.characters == 1:
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button2():
-	if Main.characters == 2:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button4():
-	if Main.characters == 3:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button5():
-	if Main.characters == 4:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button6():
-	if Main.characters == 5:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
-
-
-
-
+	Main.two_times -= 1
+	check_two_times()
 
 func button7():
-	if Main.characters == 6:
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button8():
-	if Main.characters == 7:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button9():
-	if Main.characters == 8:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button10():
-	if Main.characters == 9:	
-		Main.points += 1
-		Main.characters += 1
-		Main.two_times = 2
-	else:
-		Main.two_times -= 1
-		check_two_times()
+	Main.two_times -= 1
+	check_two_times()
 
 func button11():
 	if Main.characters == 10:	
@@ -275,16 +232,14 @@ func button11():
 	else:
 		Main.two_times -= 1
 		check_two_times()
-		
-		
-		
+
 func close_game():
 	get_tree().quit()
 
 func restart_game():
 	audio_player.stop()
-	audio_player.play()
 	get_tree().reload_current_scene()
+
 
 
 
