@@ -44,9 +44,15 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
 
-[node name="Hint 1" type="AudioStreamPlayer" parent="."]
+[node name="PlayHint" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = SubResource("AudioStream_m5vov")
 
-[node name="Hint 2" type="AudioStreamPlayer" parent="."]
+[node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
+[connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]
+[connection signal="finished" from="PlayHint/Hint 1" to="." method="_on_hint_1_finished"]

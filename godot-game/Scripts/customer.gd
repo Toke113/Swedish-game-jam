@@ -9,6 +9,7 @@ var current_customer:bool = true
 var timer_started:bool = false
 var enter_store:bool = false
 var exit_store:bool = false
+var hint_played:bool = false
 
 signal change_customer
 signal lost_customer
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 	elif current_customer:
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
-		if !timer_started:
+		if !timer_started && hint_played:
 			$Timer/time_left.start()
 			timer_started = true
 	
@@ -50,6 +51,12 @@ func _on_time_left_timeout() -> void:
 	exit_store = true
 	$Timer.queue_free()
 	change_customer.emit()
-	
 
-	
+
+func _on_hint_1_finished() -> void:
+	hint_played = true
+
+
+func _on_play_hint_pressed() -> void:
+	hint_played = true
+	pass # Replace with function body.

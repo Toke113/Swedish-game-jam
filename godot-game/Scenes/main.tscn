@@ -30,6 +30,13 @@ position = Vector2(2443, 75)
 [node name="customer_4" parent="." instance=ExtResource("7_hptm8")]
 position = Vector2(2436, 88)
 
+[node name="Heart" type="Sprite2D" parent="."]
+
+[node name="Heart2" type="Sprite2D" parent="."]
+
+[node name="Heart3" type="Sprite2D" parent="."]
+
+[connection signal="lives_changed" from="." to="." method="_on_lives_changed"]
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]
 [connection signal="move_customer_1" from="." to="customer_1" method="_on_main_move_customer_1"]
 [connection signal="move_customer_1" from="." to="customer_2" method="_on_main_move_customer_1"]

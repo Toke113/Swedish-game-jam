@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cilar20aja0cc"]
+[gd_scene load_steps=5 format=3 uid="uid://cilar20aja0cc"]
 
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="1_7c3kf"]
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
@@ -13,6 +13,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="AudioStream" id="AudioStream_7c3kf"]
 
 [node name="customer" type="Node2D"]
 rotation = -6.28319
@@ -43,5 +45,16 @@ layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
 
+[node name="PlayHint" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
+stream = SubResource("AudioStream_7c3kf")
+
+[node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
+
 [connection signal="change_customer" from="." to="." method="_on_change_customer"]
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
+[connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]
+[connection signal="finished" from="PlayHint/Hint 1" to="." method="_on_hint_1_finished"]
