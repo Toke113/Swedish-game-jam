@@ -25,7 +25,7 @@ signal active_customer
 
 func _ready() -> void:
 	desired_music = 1
-	time = 100
+	time = 10
 	hint = "I love the number 1"
 
 	
@@ -87,6 +87,7 @@ func _on_time_left_timeout() -> void:
 	lost_customer.emit()
 	exit_store = true
 	$Timer.queue_free()
+	Main.lives -=1
 	change_customer.emit()
 
 

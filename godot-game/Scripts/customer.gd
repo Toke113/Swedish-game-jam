@@ -61,6 +61,7 @@ func _on_time_left_timeout() -> void:
 	lost_customer.emit()
 	exit_store = true
 	$Timer.queue_free()
+	Main.lives -= 1
 	change_customer.emit()
 
 
