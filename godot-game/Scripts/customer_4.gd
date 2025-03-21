@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 			enter_store = false
 			
 	elif moving:
+		points_on_change = Main.points
 		var target_position = Vector2(930,360)
 		var speed = 400
 
@@ -109,6 +110,7 @@ func _on_play_hint_pressed() -> void:
 
 func _on_main_points_changed(points) -> void:
 	if current_customer && points_on_change != points:
+		points_on_change = points
 		exit_store = true
 		$Timer.queue_free()
 		current_customer = false

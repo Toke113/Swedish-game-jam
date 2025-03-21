@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cilar20aja0cc"]
+[gd_scene load_steps=9 format=3 uid="uid://cilar20aja0cc"]
 
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
 [ext_resource type="Texture2D" uid="uid://pc0mudrf31k1" path="res://Assets/Funky lady/Funky_neutral.png" id="2_7c3kf"]
+[ext_resource type="Texture2D" uid="uid://iyo5sijxgfsk" path="res://Assets/speech-bubble.png" id="2_q72uo"]
 [ext_resource type="AudioStream" uid="uid://c4toalpcspias" path="res://Assets/Audio/Hints/funky-voicemessage1.mp3" id="2_qf3me"]
 [ext_resource type="AudioStream" uid="uid://cimpw7ujfxjil" path="res://Assets/Audio/Hints/funky-voicemessage2.mp3" id="3_vkxjs"]
 [ext_resource type="Texture2D" uid="uid://7qp735cdjgeu" path="res://Assets/Funky lady/Funky_angry.png" id="5_2o0mk"]
@@ -19,10 +20,10 @@ offset_bottom = 8.0
 
 [node name="Timer" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_left = -293.0
-offset_top = -205.0
-offset_right = -193.0
-offset_bottom = -178.0
+offset_left = 136.001
+offset_top = -223.999
+offset_right = 236.001
+offset_bottom = -196.999
 show_percentage = false
 
 [node name="time_left" type="Timer" parent="Timer"]
@@ -34,11 +35,13 @@ offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
 z_index = 2
-offset_left = -484.999
-offset_top = -129.002
-offset_right = -444.999
-offset_bottom = -98.0022
-text = "hint"
+offset_left = -530.999
+offset_top = -327.002
+offset_right = -10.9985
+offset_bottom = 192.998
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("2_q72uo")
+flat = true
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("2_qf3me")

@@ -26,6 +26,7 @@ func _ready() -> void:
 	desired_music = 2
 	time = 10
 	hint = "I love the number 2"
+	points_on_change = 0
 	$Timer/time_left.wait_time = time
 	$Timer.max_value = time
 	$Timer.value = time
@@ -74,7 +75,8 @@ func _on_play_hint_pressed() -> void:
 
 
 func _on_main_points_changed(points) -> void:
-	if current_customer && points != 0:
+	if current_customer && points != points_on_change:
+		points_on_change = points
 		exit_store = true
 		current_customer = false
 		$FunkyNeutral.visible = false

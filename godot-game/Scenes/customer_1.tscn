@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnxfijmvifjor"]
+[gd_scene load_steps=9 format=3 uid="uid://bnxfijmvifjor"]
 
 [ext_resource type="Script" uid="uid://f2w7ad08tqdp" path="res://Scripts/customer_1.gd" id="1_35nt4"]
+[ext_resource type="Texture2D" uid="uid://iyo5sijxgfsk" path="res://Assets/speech-bubble.png" id="2_2t1bk"]
 [ext_resource type="Texture2D" uid="uid://mr5c4c0twa0j" path="res://Assets/Child/Child_neutral.png" id="2_5uy8o"]
 [ext_resource type="AudioStream" uid="uid://1f1dm3k1llk2" path="res://Assets/Audio/Hints/child-voicemessage1.mp3" id="2_fqe6u"]
 [ext_resource type="AudioStream" uid="uid://c22588drfwqsh" path="res://Assets/Audio/Hints/child-voicemessage2.mp3" id="3_2t1bk"]
@@ -18,10 +19,10 @@ offset_bottom = 8.0
 
 [node name="Timer" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_left = -293.0
-offset_top = -205.0
-offset_right = -193.0
-offset_bottom = -178.0
+offset_left = 179.0
+offset_top = -128.0
+offset_right = 279.0
+offset_bottom = -101.0
 show_percentage = false
 
 [node name="time_left" type="Timer" parent="Timer"]
@@ -33,10 +34,13 @@ offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
 z_index = 2
-offset_left = -257.0
-offset_top = -49.0
-offset_right = -249.0
-offset_bottom = -41.0
+offset_left = -423.0
+offset_top = -275.0
+offset_right = 97.0
+offset_bottom = 245.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("2_2t1bk")
+flat = true
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("2_fqe6u")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3nyp6al7matu"]
+[gd_scene load_steps=9 format=3 uid="uid://d3nyp6al7matu"]
 
 [ext_resource type="Script" uid="uid://b2clqul8qk3ia" path="res://Scripts/customer_2.gd" id="1_1q40j"]
 [ext_resource type="AudioStream" uid="uid://c78a7tnytr53p" path="res://Assets/Audio/Hints/elitelady-voicemessage1.mp3" id="2_70imj"]
+[ext_resource type="Texture2D" uid="uid://iyo5sijxgfsk" path="res://Assets/speech-bubble.png" id="2_dx8y0"]
 [ext_resource type="Texture2D" uid="uid://ccj2jb5p5qcau" path="res://Assets/Elegant/Elegant_neutral.png" id="3_7ogpk"]
 [ext_resource type="AudioStream" uid="uid://dn2r47ex6tqwg" path="res://Assets/Audio/Hints/elitelady-voicemessage2.mp3" id="3_dx8y0"]
 [ext_resource type="Texture2D" uid="uid://bvu2oiruohdw3" path="res://Assets/Elegant/Elegant_angry.png" id="4_70imj"]
@@ -20,10 +21,10 @@ offset_bottom = 8.0
 
 [node name="Timer" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_left = -293.0
-offset_top = -205.0
-offset_right = -193.0
-offset_bottom = -178.0
+offset_left = 262.0
+offset_top = -163.0
+offset_right = 362.0
+offset_bottom = -136.0
 show_percentage = false
 
 [node name="time_left" type="Timer" parent="Timer"]
@@ -35,11 +36,14 @@ offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
 z_index = 2
-offset_left = 292.0
-offset_top = -171.0
-offset_right = 300.0
-offset_bottom = -163.0
+offset_left = -444.0
+offset_top = -267.0
+offset_right = 113.0
+offset_bottom = 253.0
+scale = Vector2(0.5, 0.5)
 text = "Hint"
+icon = ExtResource("2_dx8y0")
+flat = true
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("2_70imj")

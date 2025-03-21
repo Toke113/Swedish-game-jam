@@ -97,6 +97,7 @@ func _on_play_hint_pressed() -> void:
 
 func _on_main_points_changed(points) -> void:
 	if current_customer && points_on_change != points:
+		points_on_change = points
 		exit_store = true
 		$Timer.queue_free()
 		current_customer = false

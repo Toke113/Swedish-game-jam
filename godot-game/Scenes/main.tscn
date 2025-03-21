@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg8gdyjoqv88j"]
+[gd_scene load_steps=11 format=3 uid="uid://bg8gdyjoqv88j"]
 
 [ext_resource type="Script" uid="uid://klgg57wnabbe" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://c430tj11bcy5g" path="res://Scenes/table.tscn" id="2_8gbba"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3nyp6al7matu" path="res://Scenes/customer_2.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bspgfl5ifdmkg" path="res://Scenes/customer_3.tscn" id="6_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://bmcp8yrrckgni" path="res://Scenes/customer_4.tscn" id="7_hptm8"]
+[ext_resource type="Texture2D" uid="uid://b0kj2a6obrewj" path="res://Assets/hearts.png" id="9_ynf5e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynf5e"]
 texture = ExtResource("2_344ge")
@@ -41,11 +42,19 @@ position = Vector2(2443, 75)
 position = Vector2(2436, 88)
 
 [node name="Heart" type="Sprite2D" parent="."]
-position = Vector2(92, -41)
+position = Vector2(90, 75)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("9_ynf5e")
 
 [node name="Heart2" type="Sprite2D" parent="."]
+position = Vector2(200, 75)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("9_ynf5e")
 
 [node name="Heart3" type="Sprite2D" parent="."]
+position = Vector2(310, 75)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("9_ynf5e")
 
 [connection signal="lives_changed" from="." to="." method="_on_lives_changed"]
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]
