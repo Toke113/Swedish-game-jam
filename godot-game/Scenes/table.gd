@@ -27,16 +27,16 @@ func _ready():
 	]
 
 	button_sounds = {
-		$Button6: preload("res://sound1.mp3"),
-		$Button2: preload("res://sound2.mp3"),
-		$Button4: preload("res://sound3.mp3"),
-		$Button5: preload("res://sound4.mp3"),
-		$Button: preload("res://sound5.mp3"),
-		$Button7: preload("res://sound1.mp3"),
-		$Button8: preload("res://sound2.mp3"),
-		$Button9: preload("res://sound3.mp3"),
-		$Button10: preload("res://sound4.mp3"),
-		$Button11: preload("res://sound5.mp3")
+		$Button6: preload("res://Rock.mp3"),
+		$Button2: preload("res://Latin.mp3"),
+		$Button4: preload("res://Kpop.mp3"),
+		$Button5: preload("res://House.mp3"),
+		$Button: preload("res://Hiphop.mp3"),
+		$Button7: preload("res://Pop.mp3"),
+		$Button8: preload("res://Metal.mp3"),
+		$Button9: preload("res://Classical.mp3"),
+		$Button10: preload("res://Country.mp3"),
+		$Button11: preload("res://Jazz.mp3")
 	}
 
 	# Музыка не играет при загрузке сцены

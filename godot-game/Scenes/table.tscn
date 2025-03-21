@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c430tj11bcy5g"]
+[gd_scene load_steps=34 format=3 uid="uid://c430tj11bcy5g"]
 
 [ext_resource type="Script" uid="uid://b6l8x8qhmaleg" path="res://Scenes/table.gd" id="1_xqsq7"]
 [ext_resource type="Texture2D" uid="uid://cl1nnl7w0vi75" path="res://counter.png" id="2_xexre"]
@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://d370uv0iyprif" path="res://latin-icon.png" id="5_llvxf"]
 [ext_resource type="Texture2D" uid="uid://8mrywo2qjcro" path="res://kpop-icon.png" id="6_x0duj"]
 [ext_resource type="Texture2D" uid="uid://dob1g6txxqg03" path="res://rock-icon.png" id="7_oi710"]
-[ext_resource type="Texture2D" uid="uid://c3ggs34olhjrm" path="res://restart.png" id="7_usajj"]
-[ext_resource type="Texture2D" uid="uid://caw14qyw0ak8v" path="res://close.png" id="8_o4lkm"]
+[ext_resource type="Texture2D" uid="uid://3kwbn27lyde2" path="res://restart-button.png" id="8_k47uh"]
 [ext_resource type="Texture2D" uid="uid://buttklo4qbat8" path="res://cust_area.png" id="9_xexre"]
+[ext_resource type="Texture2D" uid="uid://bdj7he21w6nus" path="res://cancel-button.png" id="9_xhfwg"]
 [ext_resource type="Texture2D" uid="uid://b7m4dqbkqf6si" path="res://hiphop-icon.png" id="10_k47uh"]
 [ext_resource type="Texture2D" uid="uid://do5bnqisle0fl" path="res://house-icon.png" id="11_xhfwg"]
 [ext_resource type="Texture2D" uid="uid://b037kew57bqoa" path="res://pop-icon.png" id="13_5kx35"]
@@ -30,6 +30,10 @@ texture = ExtResource("2_xexre")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_filji"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xhfwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kx35"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3leha"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sln7q"]
 
@@ -99,18 +103,20 @@ theme_override_icons/icon = ExtResource("7_oi710")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xhfwg")
 
 [node name="ButtonRestart" type="Button" parent="."]
-offset_left = 1607.0
-offset_top = 23.0
-offset_right = 1705.0
-offset_bottom = 121.0
-theme_override_icons/icon = ExtResource("7_usajj")
+offset_left = 1356.0
+offset_top = 20.0
+offset_right = 1714.0
+offset_bottom = 150.0
+theme_override_icons/icon = ExtResource("8_k47uh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5kx35")
 
 [node name="ButtonClose" type="Button" parent="."]
-offset_left = 1781.0
-offset_top = 29.0
-offset_right = 1879.0
-offset_bottom = 127.0
-theme_override_icons/icon = ExtResource("8_o4lkm")
+offset_left = 1755.0
+offset_top = 9.0
+offset_right = 1885.0
+offset_bottom = 139.0
+theme_override_icons/icon = ExtResource("9_xhfwg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3leha")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -139,7 +145,6 @@ offset_bottom = 610.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4ntqo")
 
 [node name="Button7" type="Button" parent="."]
-visible = false
 offset_left = 1279.0
 offset_top = 903.0
 offset_right = 1429.0
@@ -148,16 +153,14 @@ theme_override_icons/icon = ExtResource("13_5kx35")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4463s")
 
 [node name="Button8" type="Button" parent="."]
-visible = false
-offset_left = 591.0
+offset_left = 657.0
 offset_top = 916.0
-offset_right = 741.0
+offset_right = 807.0
 offset_bottom = 1066.0
 theme_override_icons/icon = ExtResource("14_3leha")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ssv1w")
 
 [node name="Button9" type="Button" parent="."]
-visible = false
 offset_left = 885.0
 offset_top = 914.0
 offset_right = 1043.0
@@ -167,7 +170,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_6cc7k")
 icon = ExtResource("15_bfjrb")
 
 [node name="Button10" type="Button" parent="."]
-visible = false
 offset_left = 415.0
 offset_top = 919.0
 offset_right = 565.0
@@ -176,7 +178,6 @@ theme_override_icons/icon = ExtResource("16_pxje1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1r26c")
 
 [node name="Button11" type="Button" parent="."]
-visible = false
 offset_left = 1078.0
 offset_top = 909.0
 offset_right = 1228.0
