@@ -16,17 +16,20 @@ texture = ExtResource("2_344ge")
 script = ExtResource("1_jjgbg")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = -1
 custom_minimum_size = Vector2(1900, 1080)
 offset_right = 1900.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ynf5e")
+
+[node name="table" parent="." instance=ExtResource("2_8gbba")]
 
 [node name="customer" parent="." instance=ExtResource("3_jjvhh")]
 position = Vector2(932, 362)
 scale = Vector2(0.700125, 1)
 
 [node name="customer_1" parent="." instance=ExtResource("4_6bp64")]
-position = Vector2(1730, 230)
+position = Vector2(1783, 459)
 
 [node name="customer_2" parent="." instance=ExtResource("5_344ge")]
 position = Vector2(2446, 90)
@@ -38,13 +41,11 @@ position = Vector2(2443, 75)
 position = Vector2(2436, 88)
 
 [node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(92, -41)
 
 [node name="Heart2" type="Sprite2D" parent="."]
 
 [node name="Heart3" type="Sprite2D" parent="."]
-
-[node name="table" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(6, 0)
 
 [connection signal="lives_changed" from="." to="." method="_on_lives_changed"]
 [connection signal="move_customer_1" from="." to="." method="_on_move_customer_1"]

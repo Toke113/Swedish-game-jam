@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://osgrqngw6ksa" path="res://Assets/Elegant/Elegant_won.png" id="6_3042g"]
 
 [node name="customer_2" type="Node2D"]
+z_index = -1
 script = ExtResource("1_1q40j")
 
 [node name="TextEdit" type="TextEdit" parent="."]
@@ -33,10 +34,12 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
+z_index = 2
 offset_left = 292.0
 offset_top = -171.0
 offset_right = 300.0
 offset_bottom = -163.0
+text = "Hint"
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("2_70imj")

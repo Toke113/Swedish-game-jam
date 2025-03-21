@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cilar20aja0cc"]
+[gd_scene load_steps=8 format=3 uid="uid://cilar20aja0cc"]
 
 [ext_resource type="Script" uid="uid://dkg5sbjneftre" path="res://Scripts/customer.gd" id="1_fp685"]
 [ext_resource type="Texture2D" uid="uid://pc0mudrf31k1" path="res://Assets/Funky lady/Funky_neutral.png" id="2_7c3kf"]
 [ext_resource type="AudioStream" uid="uid://c4toalpcspias" path="res://Assets/Audio/Hints/funky-voicemessage1.mp3" id="2_qf3me"]
 [ext_resource type="AudioStream" uid="uid://cimpw7ujfxjil" path="res://Assets/Audio/Hints/funky-voicemessage2.mp3" id="3_vkxjs"]
+[ext_resource type="Texture2D" uid="uid://7qp735cdjgeu" path="res://Assets/Funky lady/Funky_angry.png" id="5_2o0mk"]
+[ext_resource type="Texture2D" uid="uid://dx7t2s1brtaoi" path="res://Assets/Funky lady/Funky_failed.png" id="6_q72uo"]
+[ext_resource type="Texture2D" uid="uid://csht3lkfky1qf" path="res://Assets/Funky lady/Funky_won.png" id="7_olakf"]
 
 [node name="customer" type="Node2D"]
+z_index = -1
 rotation = -6.28319
 script = ExtResource("1_fp685")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Timer" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
@@ -31,10 +33,12 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
-offset_left = -400.999
-offset_top = -117.002
-offset_right = -392.999
-offset_bottom = -109.002
+z_index = 2
+offset_left = -484.999
+offset_top = -129.002
+offset_right = -444.999
+offset_bottom = -98.0022
+text = "hint"
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("2_qf3me")
@@ -47,12 +51,15 @@ texture = ExtResource("2_7c3kf")
 
 [node name="FunkyAngry" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("5_2o0mk")
 
 [node name="FunkyFailed" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("6_q72uo")
 
 [node name="FunkyWon" type="Sprite2D" parent="."]
 visible = false
+texture = ExtResource("7_olakf")
 
 [connection signal="change_customer" from="." to="." method="_on_change_customer"]
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]

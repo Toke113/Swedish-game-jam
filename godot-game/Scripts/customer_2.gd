@@ -4,6 +4,7 @@ var desired_music
 var time
 
 var hint
+var points_on_change
 
 var current_customer:bool = false
 var timer_started:bool = false
@@ -12,6 +13,9 @@ var enter_store:bool = false
 var exit_store:bool = false
 var hint_played:bool = false
 var two_times_changed:bool = false
+var first_hint_active:bool = false
+var second_hint_active:bool = false
+var points_changed:bool = false
 
 signal change_customer
 signal lost_customer
@@ -95,30 +99,44 @@ func _on_hint_1_finished() -> void:
 
 
 func _on_play_hint_pressed() -> void:
-	hint_played = true
-	pass # Replace with function body.
+	if first_hint_active:
+		$"PlayHint/Hint 1".play()
+	elif second_hint_active:
+		$"PlayHint/Hint 2".play()
 
 
-func _on_main_points_changed() -> void:
-	if current_customer:
+func _on_main_points_changed(points) -> void:
+	if current_customer && points_on_change != points:
 		exit_store = true
 		$Timer.queue_free()
+		current_customer = false
+		$ElegantNeutral.visible = false
+		$ElegantAngry.visible = false
+		$ElegantWon.visible = true
 		change_customer.emit()
 
 
 func _on_main_two_times_changed(two_times) -> void:
 	if current_customer:
 		if two_times == 2 && !two_times_changed:
-			pass
+			first_hint_active = true
 		elif two_times == 1:
-			
+
 			two_times_changed = true
-			pass #change hint
+			first_hint_active = false
+			second_hint_active = true
+			$ElegantNeutral.visible = false
+			$ElegantAngry.visible = true
+			$ElegantFailed.visible = false
 		elif two_times == 2 && two_times_changed:
 			print_debug(two_times)
 			exit_store = true
 			$Timer.queue_free()
 			two_times_changed = false
+			current_customer = false
+			$ElegantNeutral.visible = false
+			$ElegantAngry.visible = false
+			$ElegantFailed.visible = true
 			change_customer.emit()
 		else:
 			pass

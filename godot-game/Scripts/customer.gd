@@ -4,6 +4,7 @@ var desired_music
 var time: float
 
 var hint
+var points_on_change
 
 var current_customer:bool = true
 var timer_started:bool = false
@@ -11,6 +12,9 @@ var enter_store:bool = false
 var exit_store:bool = false
 var hint_played:bool = false
 var two_times_changed:bool = false
+var first_hint_active:bool = false
+var second_hint_active:bool = false
+var points_changed:bool = false
 
 signal change_customer
 signal lost_customer
@@ -26,6 +30,7 @@ func _ready() -> void:
 	$Timer.max_value = time
 	$Timer.value = time
 	active_customer.emit(desired_music)
+
 	
 func _process(delta: float) -> void:
 	if exit_store:
@@ -61,13 +66,21 @@ func _on_hint_1_finished() -> void:
 
 
 func _on_play_hint_pressed() -> void:
-	hint_played = true
+	if first_hint_active:
+		$"PlayHint/Hint 1".play()
+	elif second_hint_active:
+		$"PlayHint/Hint 2".play()
 	pass # Replace with function body.
 
 
 func _on_main_points_changed(points) -> void:
 	if current_customer && points != 0:
 		exit_store = true
+		current_customer = false
+		$FunkyNeutral.visible = false
+		$FunkyAngry.visible = false
+		$FunkyFailed.visible = false
+		$FunkyWon.visible = true
 		$Timer.queue_free()
 		change_customer.emit()
 
@@ -75,16 +88,26 @@ func _on_main_points_changed(points) -> void:
 func _on_main_two_times_changed(two_times) -> void:
 	if current_customer:
 		if two_times == 2 && !two_times_changed:
-			pass
+			first_hint_active = true
 		elif two_times == 1:
 			
 			two_times_changed = true
-			pass #change hint
+			first_hint_active = false
+			second_hint_active = true
+			$FunkyNeutral.visible = false
+			$FunkyAngry.visible = true
+			$FunkyFailed.visible = false
+			$FunkyWon.visible = false
 		elif two_times == 2 && two_times_changed:
 			print_debug(two_times)
 			exit_store = true
 			$Timer.queue_free()
 			two_times_changed = false
+			current_customer = false
+			$FunkyNeutral.visible = false
+			$FunkyAngry.visible = false
+			$FunkyFailed.visible = true
+			$FunkyWon.visible = false
 			change_customer.emit()
 		else:
 			pass

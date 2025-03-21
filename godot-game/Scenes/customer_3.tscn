@@ -17,6 +17,7 @@ animations = [{
 }]
 
 [node name="customer_3" type="Node2D"]
+z_index = -1
 script = ExtResource("1_m5vov")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -45,8 +46,10 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="PlayHint" type="Button" parent="."]
+z_index = 2
 offset_right = 8.0
 offset_bottom = 8.0
+text = "Hint"
 
 [node name="Hint 1" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("3_0m3v6")
