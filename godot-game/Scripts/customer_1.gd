@@ -112,7 +112,7 @@ func _on_main_two_times_changed(two_times) -> void:
 		if two_times == 2 && !two_times_changed:
 			first_hint_active = true
 		elif two_times == 1:
-			
+
 			two_times_changed = true
 			first_hint_active = false
 			second_hint_active = true

@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bspgfl5ifdmkg"]
+[gd_scene load_steps=11 format=3 uid="uid://bspgfl5ifdmkg"]
 
 [ext_resource type="Script" uid="uid://cb845clh3j8an" path="res://Scripts/customer_3.gd" id="1_m5vov"]
 [ext_resource type="Texture2D" uid="uid://dfmo80wctmk3m" path="res://Assets/Placeholder snowman.png" id="2_l54us"]
 [ext_resource type="AudioStream" uid="uid://vyiygaxmp5m7" path="res://Assets/Audio/Hints/oldman-voicemessage1.mp3" id="3_0m3v6"]
 [ext_resource type="Texture2D" uid="uid://iyo5sijxgfsk" path="res://Assets/speech-bubble.png" id="3_g7vuq"]
 [ext_resource type="AudioStream" uid="uid://ef2ku6we4nbq" path="res://Assets/Audio/Hints/oldman-voicemessage2.mp3" id="4_g7vuq"]
+[ext_resource type="Texture2D" uid="uid://bemlwrjnu7rcj" path="res://Assets/punk/Punk_neutral.png" id="6_3v3e3"]
+[ext_resource type="Texture2D" uid="uid://jvuxlogv4cb6" path="res://Assets/punk/Punk_won.png" id="7_2ibo1"]
+[ext_resource type="Texture2D" uid="uid://dxxt7uemblwv" path="res://Assets/punk/Punk_failure.png" id="8_shwmq"]
+[ext_resource type="Texture2D" uid="uid://dtjutgcte0frt" path="res://Assets/punk/Punk_angry.png" id="9_17pn8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7c3kf"]
 animations = [{
@@ -62,6 +66,18 @@ stream = ExtResource("3_0m3v6")
 
 [node name="Hint 2" type="AudioStreamPlayer" parent="PlayHint"]
 stream = ExtResource("4_g7vuq")
+
+[node name="Neutral" type="Sprite2D" parent="."]
+texture = ExtResource("6_3v3e3")
+
+[node name="Won" type="Sprite2D" parent="."]
+texture = ExtResource("7_2ibo1")
+
+[node name="Failure" type="Sprite2D" parent="."]
+texture = ExtResource("8_shwmq")
+
+[node name="Angry" type="Sprite2D" parent="."]
+texture = ExtResource("9_17pn8")
 
 [connection signal="timeout" from="Timer/time_left" to="." method="_on_time_left_timeout"]
 [connection signal="pressed" from="PlayHint" to="." method="_on_play_hint_pressed"]

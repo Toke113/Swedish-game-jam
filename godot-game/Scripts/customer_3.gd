@@ -113,6 +113,9 @@ func _on_main_points_changed(points) -> void:
 		exit_store = true
 		$Timer.queue_free()
 		current_customer = false
+		$Neutral.visible = false
+		$Angry.visible = false
+		$Won.visible = true
 		change_customer.emit()
 
 
@@ -121,15 +124,21 @@ func _on_main_two_times_changed(two_times) -> void:
 		if two_times == 2 && !two_times_changed:
 			first_hint_active = true
 		elif two_times == 1:
-			
+
 			two_times_changed = true
 			first_hint_active = true
+			$Neutral.visible = false
+			$Angry.visible = true
+			$Failed.visible = false
 		elif two_times == 2 && two_times_changed:
 			print_debug(two_times)
 			exit_store = true
 			$Timer.queue_free()
 			two_times_changed = false
 			current_customer = false
+			$Neutral.visible = false
+			$Angry.visible = false
+			$Failed.visible = true
 			change_customer.emit()
 		else:
 			pass
