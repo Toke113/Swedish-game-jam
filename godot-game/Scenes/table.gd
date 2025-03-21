@@ -187,43 +187,79 @@ func check_two_times():
 		Main.lives -= 1
 		check_lives()
 		Main.two_times = 2		
-		Main.characters += 1
+		#Main.characters += 1
 
 func button():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 1:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button2():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 2:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button4():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 3:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button5():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 4:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button6():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 5:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button7():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 6:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button8():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 7:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button9():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 8:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button10():
-	Main.two_times -= 1
-	check_two_times()
+	if Main.characters == 9:
+		Main.points += 1
+		check_two_times()
+	else:
+		Main.two_times -= 1
+		check_two_times()
 
 func button11():
 	if Main.characters == 10:	

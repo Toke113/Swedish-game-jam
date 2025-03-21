@@ -30,13 +30,13 @@ position = Vector2(932, 362)
 scale = Vector2(0.700125, 1)
 
 [node name="customer_1" parent="." instance=ExtResource("4_6bp64")]
-position = Vector2(1783, 459)
+position = Vector2(1784, 514)
 
 [node name="customer_2" parent="." instance=ExtResource("5_344ge")]
-position = Vector2(2446, 90)
+position = Vector2(2419, 165)
 
 [node name="customer_3" parent="." instance=ExtResource("6_ynf5e")]
-position = Vector2(2443, 75)
+position = Vector2(2447, 165)
 
 [node name="customer_4" parent="." instance=ExtResource("7_hptm8")]
 position = Vector2(2436, 88)

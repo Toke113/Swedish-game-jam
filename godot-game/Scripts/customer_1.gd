@@ -25,9 +25,9 @@ signal active_customer
 #TODO Function that sets the value of the customer
 
 func _ready() -> void:
-	desired_music = 3
-	Main.characters = desired_music
-	time = 10
+	desired_music = 9
+
+	time = 120
 	hint = "I love the number 3"
 	
 	$Timer/time_left.wait_time = time
@@ -37,9 +37,10 @@ func _ready() -> void:
 	$Timer.value = $Timer/time_left.time_left
 	
 func _process(delta: float) -> void:
+	
 	if moving:
 		points_on_change = Main.points
-		var target_position = Vector2(930,360)
+		var target_position = Vector2(880,520)
 		var speed = 400
 
 		var direction = (target_position-position).normalized()
@@ -64,16 +65,20 @@ func _process(delta: float) -> void:
 
 	
 	elif current_customer:
+		Main.characters = desired_music
+		print_debug(Main.characters)
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
 		if !timer_started && hint_played:
 			$Timer/time_left.start()
 			timer_started = true
+		
 	
 	
 
 func _on_time_left_timeout() -> void:
 	lost_customer.emit()
+	Main.lives-=1
 	exit_store = true
 	#$Timer.queue_free()
 	change_customer.emit()

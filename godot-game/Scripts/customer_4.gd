@@ -27,7 +27,7 @@ func _ready() -> void:
 	desired_music = 2
 	time = 2
 	hint = "I love the number 2"
-	Main.characters = desired_music
+
 	
 	$Timer/time_left.wait_time = time
 	if current_customer:
@@ -37,6 +37,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if enter_store:
+		Main.two_times = 2
 		var target_position = Vector2(1900,70)
 		var speed = 400
 
@@ -74,6 +75,7 @@ func _process(delta: float) -> void:
 			change_customer.emit()
 	
 	elif current_customer:
+		Main.characters = desired_music
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
 		if !timer_started && hint_played:
@@ -83,6 +85,7 @@ func _process(delta: float) -> void:
 
 func _on_time_left_timeout() -> void:
 	lost_customer.emit()
+	Main.lives-=1
 	exit_store = true
 	$Timer.queue_free()
 	change_customer.emit()

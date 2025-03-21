@@ -24,8 +24,8 @@ signal active_customer
 #TODO Function that sets the value of the customer
 
 func _ready() -> void:
-	desired_music = 5
-	time = 2
+	desired_music = 6
+	time = 80
 	hint = "I love the number 5"
 	Main.characters = desired_music
 	
@@ -37,7 +37,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if enter_store:
-		var target_position = Vector2(1900,70)
+		
+		var target_position = Vector2(1725,450)
 		var speed = 400
 
 		var direction = (target_position-position).normalized()
@@ -47,8 +48,9 @@ func _process(delta: float) -> void:
 		if position.distance_to(target_position) < Main.threshold:
 			enter_store = false
 	elif moving:
+		Main.two_times = 2
 		points_on_change = Main.points
-		var target_position = Vector2(930,360)
+		var target_position = Vector2(850,400)
 		var speed = 400
 
 		var direction = (target_position-position).normalized()
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 	
 	elif exit_store:
 		
-		var target_position = Vector2(-485,285)
+		var target_position = Vector2(-120,285)
 		var speed = 400
 		var direction = (target_position-position).normalized()
 			
@@ -73,6 +75,7 @@ func _process(delta: float) -> void:
 			change_customer.emit()
 	
 	elif current_customer:
+		Main.characters = desired_music
 		$Timer.value = $Timer/time_left.time_left
 		$Timer/RichTextLabel.text = str($Timer.value).pad_decimals(2)
 		if !timer_started && hint_played:
@@ -82,6 +85,7 @@ func _process(delta: float) -> void:
 
 func _on_time_left_timeout() -> void:
 	lost_customer.emit()
+	Main.lives-=1
 	exit_store = true
 	$Timer.queue_free()
 	change_customer.emit()

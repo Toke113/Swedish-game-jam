@@ -8,7 +8,7 @@ var lives=3
 var two_times=2
 		
 var threshold = 6
-var characters=1
+var characters=8
 var curr_customer = 0
 
 var two_times_tracker = 2:
