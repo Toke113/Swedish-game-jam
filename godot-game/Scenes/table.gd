@@ -264,7 +264,8 @@ func button10():
 func button11():
 	if Main.characters == 10:	
 		Main.points += 1
-		get_tree().change_scene_to_file("res://Scenes/winscene.tscn")
+		check_two_times()
+		#get_tree().change_scene_to_file("res://Scenes/winscene.tscn")
 	else:
 		Main.two_times -= 1
 		check_two_times()

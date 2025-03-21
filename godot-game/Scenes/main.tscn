@@ -65,6 +65,7 @@ texture = ExtResource("9_ynf5e")
 [connection signal="move_customer_3" from="." to="customer_3" method="_on_main_move_customer_3"]
 [connection signal="move_customer_3" from="." to="customer_4" method="_on_main_move_customer_3"]
 [connection signal="move_customer_4" from="." to="customer_4" method="_on_main_move_customer_4"]
+[connection signal="points_changed" from="." to="." method="_on_points_changed"]
 [connection signal="points_changed" from="." to="customer" method="_on_main_points_changed"]
 [connection signal="points_changed" from="." to="customer_1" method="_on_main_points_changed"]
 [connection signal="points_changed" from="." to="customer_2" method="_on_main_points_changed"]

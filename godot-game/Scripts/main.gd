@@ -103,6 +103,7 @@ func _on_lives_changed(new_lives) -> void:
 	elif new_lives == 0 && !hearts_is_0:
 		$Heart.queue_free()
 		hearts_is_0 = true
+		get_tree().change_scene_to_file("res://Scenes/losescene.tscn")
 
 
 func _on_customer_active_customer(preferred_music) -> void:
@@ -127,3 +128,8 @@ func _on_customer_3_active_customer(preferred_music) -> void:
 func _on_customer_4_active_customer(preferred_music) -> void:
 	characters = preferred_music
 	curr_customer = 4
+
+
+func _on_points_changed(new_points) -> void:
+	if new_points == 3:
+		get_tree().change_scene_to_file("res://Scenes/winscene.tscn")
