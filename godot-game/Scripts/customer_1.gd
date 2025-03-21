@@ -27,7 +27,7 @@ signal active_customer
 func _ready() -> void:
 	desired_music = 9
 
-	time = 120
+	time = 100
 	hint = "I love the number 3"
 	
 	$Timer/time_left.wait_time = time

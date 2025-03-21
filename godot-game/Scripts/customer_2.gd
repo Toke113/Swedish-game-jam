@@ -25,7 +25,7 @@ signal active_customer
 
 func _ready() -> void:
 	desired_music = 1
-	time = 10
+	time = 100
 	hint = "I love the number 1"
 
 	
